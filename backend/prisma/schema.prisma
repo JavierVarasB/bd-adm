@@ -10,4 +10,98 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url = env("DATABASE_URL")
 }
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+enum Rol {
+    JEFE
+    TRABAJADOR
+    ADMIN
+  }
+
+model Usuario {
+
+  rut       Int @id
+  nombre    String
+  rol       Rol
+  clave     String
+  correo    String @unique
+  firma     String?
+
+  documentosCreados Documentos[]
+  documentosRecibidos AsignacionDocumento[]
+
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+model Documentos {
+
+  id_documento Int @id @default(autoincrement())
+  rut_emisor Int
+  nombre String
+  ruta_archivo String
+  fecha_creacion DateTime @default(now())
+  estado String
+
+  emisor Usuario @relation(fields: [rut_emisor],references: [rut])
+
+  asignaciones AsignacionDocumento[]
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+model AsignacionDocumento {
+
+  id_asignacion Int @id @default(autoincrement())
+  id_documento Int
+  rut_receptor Int
+  estado String
+  fecha_envio DateTime?
+  fecha_visualizacion DateTime?
+  archivo_firmado String?
+
+  documento Documentos @relation(fields:[id_documento],references:[id_documento])
+  receptor Usuario @relation(fields:[rut_receptor],references:[rut])
+
+  valores ValoresCampo[]
+
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+model ValoresCampo {
+
+  id_valor Int @id @default(autoincrement())
+  id_campo Int
+  id_asignacion Int
+  valor String
+
+  campo CamposDocumento @relation(fields:[id_campo],references:[id_campo])
+  asignacion AsignacionDocumento @relation(fields:[id_asignacion],references:[id_asignacion])
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+model CamposDocumento {
+
+  id_campo Int @id @default(autoincrement())
+  nombre String
+  tipo String
+  obligatorio Boolean
+
+  campo ValoresCampo[]
+  
+}
+
