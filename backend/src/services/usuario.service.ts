@@ -25,7 +25,6 @@ export const obtenerUsuarioPorRut = async (rut: number) => {
 
 
 
-
 interface CrearUsuarioDTO {
   rut: number;
   nombre: string;
@@ -36,7 +35,6 @@ interface CrearUsuarioDTO {
 interface ActualizarUsuarioDTO {
   nombre?: string;
   correo?: string;
-  clave?: string;
 }
 
 // Crear usuario
@@ -62,27 +60,9 @@ export const actualizarUsuario = async (
   rut: number,
   datos: ActualizarUsuarioDTO
 ) => {
-  const data: {
-    nombre?: string;
-    correo?: string;
-    clave?: string;
-  } = {};
-
-  if (datos.nombre !== undefined) {
-    data.nombre = datos.nombre;
-  }
-
-  if (datos.correo !== undefined) {
-    data.correo = datos.correo;
-  }
-
-  if (datos.clave !== undefined) {
-    data.clave = await bcrypt.hash(datos.clave, 12);
-  }
-
   return prisma.usuario.update({
     where: { rut },
-    data,
+    data: datos,
     select: usuarioSelect
   });
 };
@@ -93,4 +73,47 @@ export const eliminarUsuario = async (rut: number) => {
     where: { rut },
     select: usuarioSelect
   });
+};
+
+
+export const cambiarClaveUsuario = async (
+  rut: number,
+  claveActual: string,
+  claveNueva: string
+) => {
+  const usuario = await prisma.usuario.findUnique({
+    where: { rut },
+    select: { clave: true }
+  });
+
+  if (!usuario) {
+    return "no_encontrado" as const;
+  }
+
+  const coincide = await bcrypt.compare(
+    claveActual,
+    usuario.clave
+  );
+
+  if (!coincide) {
+    return "clave_incorrecta" as const;
+  }
+
+  const mismaClave = await bcrypt.compare(
+    claveNueva,
+    usuario.clave
+  );
+
+  if (mismaClave) {
+    return "misma_clave" as const;
+  }
+
+  const nuevoHash = await bcrypt.hash(claveNueva, 12);
+
+  await prisma.usuario.update({
+    where: { rut },
+    data: { clave: nuevoHash }
+  });
+
+  return "actualizada" as const;
 };

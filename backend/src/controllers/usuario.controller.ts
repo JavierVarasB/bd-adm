@@ -1,13 +1,11 @@
 import type { Request, Response } from "express";
 import {
+  obtenerUsuarios,
+  obtenerUsuarioPorRut,
   crearUsuario,
   actualizarUsuario,
-  eliminarUsuario
-} from "../services/usuario.service.js";
-
-import {
-  obtenerUsuarios,
-  obtenerUsuarioPorRut
+  eliminarUsuario,
+  cambiarClaveUsuario
 } from "../services/usuario.service.js";
 
 
@@ -201,27 +199,24 @@ export const modificarUsuario = async (
     }
 
     const campos = Object.keys(datos);
-    const permitidos = ["nombre", "correo", "clave"];
+    const permitidos = ["nombre", "correo"];
 
     if (
       campos.length === 0 ||
       campos.some((campo) => !permitidos.includes(campo))
     ) {
       res.status(400).json({
-        message: "Solo puedes actualizar nombre, correo o clave"
+        message: "Solo puedes actualizar nombre o correo"
       });
       return;
     }
 
-    const { nombre, correo, clave } = datos;
+    const { nombre, correo} = datos;
 
     if (
       (nombre !== undefined && !esTexto(nombre)) ||
-      (correo !== undefined && !esCorreo(correo)) ||
-      (clave !== undefined &&
-        (!esTexto(clave) ||
-         clave.length < 12 ||
-         clave.length > 72))
+      (correo !== undefined && !esCorreo(correo))
+      
     ) {
       res.status(400).json({
         message: "Los datos enviados no son válidos"
@@ -234,7 +229,6 @@ export const modificarUsuario = async (
       ...(correo !== undefined && {
         correo: correo.trim().toLowerCase()
       }),
-      ...(clave !== undefined && { clave })
     });
 
     res.status(200).json({
@@ -284,7 +278,9 @@ export const borrarUsuario = async (
 
     await eliminarUsuario(rut);
 
-    res.status(204).send();
+    res.status(200).json({
+      message: "Usuario eliminado con éxito"
+    });
 
   } catch (error) {
     const codigo = codigoPrisma(error);
@@ -304,6 +300,90 @@ export const borrarUsuario = async (
     }
 
     console.error("Error al eliminar usuario:", error);
+
+    res.status(500).json({
+      message: "Error interno del servidor"
+    });
+  }
+};
+
+//ACTUALIZAR CLAVE
+export const actualizarClave = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    if (!req.usuario) {
+      res.status(401).json({
+        message: "Autenticación requerida"
+      });
+      return;
+    }
+
+    const datos: unknown = req.body;
+
+    if (!esObjeto(datos)) {
+      res.status(400).json({
+        message: "Datos inválidos"
+      });
+      return;
+    }
+
+    const { claveActual, claveNueva } = datos;
+
+    if (
+      !esTexto(claveActual) ||
+      !esTexto(claveNueva)
+    ) {
+      res.status(400).json({
+        message: "Debes ingresar ambas contraseñas"
+      });
+      return;
+    }
+
+    if (
+      claveNueva.length < 12 ||
+      Buffer.byteLength(claveNueva, "utf8") > 72
+    ) {
+      res.status(400).json({
+        message: "La nueva contraseña debe tener al menos 12 caracteres y no superar 72 bytes"
+      });
+      return;
+    }
+
+    const resultado = await cambiarClaveUsuario(
+      req.usuario.rut,
+      claveActual,
+      claveNueva
+    );
+
+    if (resultado === "clave_incorrecta") {
+      res.status(400).json({
+        message: "La contraseña actual es incorrecta"
+      });
+      return;
+    }
+
+    if (resultado === "misma_clave") {
+      res.status(400).json({
+        message: "La nueva contraseña debe ser diferente"
+      });
+      return;
+    }
+
+    if (resultado === "no_encontrado") {
+      res.status(404).json({
+        message: "Usuario no encontrado"
+      });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Contraseña actualizada correctamente"
+    });
+
+  } catch (error) {
+    console.error("Error al cambiar contraseña:", error);
 
     res.status(500).json({
       message: "Error interno del servidor"

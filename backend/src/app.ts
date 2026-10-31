@@ -1,22 +1,22 @@
-import express, { type Application } from "express";
+import express from "express";
+
 import usuarioRoutes from "./routes/usuario.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
-const app: Application = express();
+const app = express();
 
-// Middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "100kb" }));
 
-// Ruta de prueba
-app.get("/ruta", (_req, res) => {
+app.get("/api/health", (_req, res) => {
   res.status(200).json({
-    status: "ok",
-    message: "API de firma de contratos funcionando"
+    message: "Servidor funcionando correctamente"
   });
 });
 
-// Ruta de usuarios
-app.use("/api/usuarios", usuarioRoutes);
+// Autenticación
+app.use("/api/auth", authRoutes);
 
+// Usuarios
+app.use("/api/usuarios", usuarioRoutes);
 
 export default app;
