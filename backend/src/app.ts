@@ -1,5 +1,6 @@
 import express from "express";
 
+import documentoRoutes from "./routes/documento.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 
@@ -18,5 +19,8 @@ app.use("/api/auth", authRoutes);
 
 // Usuarios
 app.use("/api/usuarios", usuarioRoutes);
+
+// Documentos
+app.use("/api/documentos", documentoRoutes);
 
 export default app;
