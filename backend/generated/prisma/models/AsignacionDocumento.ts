@@ -260,6 +260,7 @@ export type AsignacionDocumentoOrderByWithRelationInput = {
 
 export type AsignacionDocumentoWhereUniqueInput = Prisma.AtLeast<{
   id_asignacion?: number
+  id_documento_rut_receptor?: Prisma.AsignacionDocumentoId_documentoRut_receptorCompoundUniqueInput
   AND?: Prisma.AsignacionDocumentoWhereInput | Prisma.AsignacionDocumentoWhereInput[]
   OR?: Prisma.AsignacionDocumentoWhereInput[]
   NOT?: Prisma.AsignacionDocumentoWhereInput | Prisma.AsignacionDocumentoWhereInput[]
@@ -272,7 +273,7 @@ export type AsignacionDocumentoWhereUniqueInput = Prisma.AtLeast<{
   documento?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   receptor?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   valores?: Prisma.ValoresCampoListRelationFilter
-}, "id_asignacion">
+}, "id_asignacion" | "id_documento_rut_receptor">
 
 export type AsignacionDocumentoOrderByWithAggregationInput = {
   id_asignacion?: Prisma.SortOrder
@@ -379,6 +380,11 @@ export type AsignacionDocumentoListRelationFilter = {
 
 export type AsignacionDocumentoOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type AsignacionDocumentoId_documentoRut_receptorCompoundUniqueInput = {
+  id_documento: number
+  rut_receptor: number
 }
 
 export type AsignacionDocumentoCountOrderByAggregateInput = {

@@ -52,6 +52,7 @@ model Documentos {
   emisor Usuario @relation(fields: [rut_emisor],references: [rut])
 
   asignaciones AsignacionDocumento[]
+  campos CamposDocumento[]
 }
 
 //////////////////////////////////////////////////////////////////
@@ -71,6 +72,8 @@ model AsignacionDocumento {
   receptor Usuario @relation(fields:[rut_receptor],references:[rut])
 
   valores ValoresCampo[]
+
+  @@unique([id_documento, rut_receptor])
 
 }
 
@@ -95,13 +98,14 @@ model ValoresCampo {
 
 
 model CamposDocumento {
-
   id_campo Int @id @default(autoincrement())
+  id_documento Int
   nombre String
   tipo String
   obligatorio Boolean
 
+  document Documentos @relation(fields:[id_documento],references:[id_documento])
+
   campo ValoresCampo[]
-  
 }
 

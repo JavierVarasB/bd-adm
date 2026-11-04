@@ -230,6 +230,7 @@ export type DocumentosWhereInput = {
   estado?: Prisma.StringFilter<"Documentos"> | string
   emisor?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   asignaciones?: Prisma.AsignacionDocumentoListRelationFilter
+  campos?: Prisma.CamposDocumentoListRelationFilter
 }
 
 export type DocumentosOrderByWithRelationInput = {
@@ -241,6 +242,7 @@ export type DocumentosOrderByWithRelationInput = {
   estado?: Prisma.SortOrder
   emisor?: Prisma.UsuarioOrderByWithRelationInput
   asignaciones?: Prisma.AsignacionDocumentoOrderByRelationAggregateInput
+  campos?: Prisma.CamposDocumentoOrderByRelationAggregateInput
 }
 
 export type DocumentosWhereUniqueInput = Prisma.AtLeast<{
@@ -255,6 +257,7 @@ export type DocumentosWhereUniqueInput = Prisma.AtLeast<{
   estado?: Prisma.StringFilter<"Documentos"> | string
   emisor?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   asignaciones?: Prisma.AsignacionDocumentoListRelationFilter
+  campos?: Prisma.CamposDocumentoListRelationFilter
 }, "id_documento">
 
 export type DocumentosOrderByWithAggregationInput = {
@@ -290,6 +293,7 @@ export type DocumentosCreateInput = {
   estado: string
   emisor: Prisma.UsuarioCreateNestedOneWithoutDocumentosCreadosInput
   asignaciones?: Prisma.AsignacionDocumentoCreateNestedManyWithoutDocumentoInput
+  campos?: Prisma.CamposDocumentoCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosUncheckedCreateInput = {
@@ -300,6 +304,7 @@ export type DocumentosUncheckedCreateInput = {
   fecha_creacion?: Date | string
   estado: string
   asignaciones?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutDocumentoInput
+  campos?: Prisma.CamposDocumentoUncheckedCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosUpdateInput = {
@@ -309,6 +314,7 @@ export type DocumentosUpdateInput = {
   estado?: Prisma.StringFieldUpdateOperationsInput | string
   emisor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosCreadosNestedInput
   asignaciones?: Prisma.AsignacionDocumentoUpdateManyWithoutDocumentoNestedInput
+  campos?: Prisma.CamposDocumentoUpdateManyWithoutDocumentNestedInput
 }
 
 export type DocumentosUncheckedUpdateInput = {
@@ -319,6 +325,7 @@ export type DocumentosUncheckedUpdateInput = {
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
   asignaciones?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutDocumentoNestedInput
+  campos?: Prisma.CamposDocumentoUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
 export type DocumentosCreateManyInput = {
@@ -458,12 +465,27 @@ export type DocumentosUpdateOneRequiredWithoutAsignacionesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DocumentosUpdateToOneWithWhereWithoutAsignacionesInput, Prisma.DocumentosUpdateWithoutAsignacionesInput>, Prisma.DocumentosUncheckedUpdateWithoutAsignacionesInput>
 }
 
+export type DocumentosCreateNestedOneWithoutCamposInput = {
+  create?: Prisma.XOR<Prisma.DocumentosCreateWithoutCamposInput, Prisma.DocumentosUncheckedCreateWithoutCamposInput>
+  connectOrCreate?: Prisma.DocumentosCreateOrConnectWithoutCamposInput
+  connect?: Prisma.DocumentosWhereUniqueInput
+}
+
+export type DocumentosUpdateOneRequiredWithoutCamposNestedInput = {
+  create?: Prisma.XOR<Prisma.DocumentosCreateWithoutCamposInput, Prisma.DocumentosUncheckedCreateWithoutCamposInput>
+  connectOrCreate?: Prisma.DocumentosCreateOrConnectWithoutCamposInput
+  upsert?: Prisma.DocumentosUpsertWithoutCamposInput
+  connect?: Prisma.DocumentosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.DocumentosUpdateToOneWithWhereWithoutCamposInput, Prisma.DocumentosUpdateWithoutCamposInput>, Prisma.DocumentosUncheckedUpdateWithoutCamposInput>
+}
+
 export type DocumentosCreateWithoutEmisorInput = {
   nombre: string
   ruta_archivo: string
   fecha_creacion?: Date | string
   estado: string
   asignaciones?: Prisma.AsignacionDocumentoCreateNestedManyWithoutDocumentoInput
+  campos?: Prisma.CamposDocumentoCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosUncheckedCreateWithoutEmisorInput = {
@@ -473,6 +495,7 @@ export type DocumentosUncheckedCreateWithoutEmisorInput = {
   fecha_creacion?: Date | string
   estado: string
   asignaciones?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutDocumentoInput
+  campos?: Prisma.CamposDocumentoUncheckedCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosCreateOrConnectWithoutEmisorInput = {
@@ -519,6 +542,7 @@ export type DocumentosCreateWithoutAsignacionesInput = {
   fecha_creacion?: Date | string
   estado: string
   emisor: Prisma.UsuarioCreateNestedOneWithoutDocumentosCreadosInput
+  campos?: Prisma.CamposDocumentoCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosUncheckedCreateWithoutAsignacionesInput = {
@@ -528,6 +552,7 @@ export type DocumentosUncheckedCreateWithoutAsignacionesInput = {
   ruta_archivo: string
   fecha_creacion?: Date | string
   estado: string
+  campos?: Prisma.CamposDocumentoUncheckedCreateNestedManyWithoutDocumentInput
 }
 
 export type DocumentosCreateOrConnectWithoutAsignacionesInput = {
@@ -552,6 +577,7 @@ export type DocumentosUpdateWithoutAsignacionesInput = {
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
   emisor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosCreadosNestedInput
+  campos?: Prisma.CamposDocumentoUpdateManyWithoutDocumentNestedInput
 }
 
 export type DocumentosUncheckedUpdateWithoutAsignacionesInput = {
@@ -561,6 +587,61 @@ export type DocumentosUncheckedUpdateWithoutAsignacionesInput = {
   ruta_archivo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
+  campos?: Prisma.CamposDocumentoUncheckedUpdateManyWithoutDocumentNestedInput
+}
+
+export type DocumentosCreateWithoutCamposInput = {
+  nombre: string
+  ruta_archivo: string
+  fecha_creacion?: Date | string
+  estado: string
+  emisor: Prisma.UsuarioCreateNestedOneWithoutDocumentosCreadosInput
+  asignaciones?: Prisma.AsignacionDocumentoCreateNestedManyWithoutDocumentoInput
+}
+
+export type DocumentosUncheckedCreateWithoutCamposInput = {
+  id_documento?: number
+  rut_emisor: number
+  nombre: string
+  ruta_archivo: string
+  fecha_creacion?: Date | string
+  estado: string
+  asignaciones?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutDocumentoInput
+}
+
+export type DocumentosCreateOrConnectWithoutCamposInput = {
+  where: Prisma.DocumentosWhereUniqueInput
+  create: Prisma.XOR<Prisma.DocumentosCreateWithoutCamposInput, Prisma.DocumentosUncheckedCreateWithoutCamposInput>
+}
+
+export type DocumentosUpsertWithoutCamposInput = {
+  update: Prisma.XOR<Prisma.DocumentosUpdateWithoutCamposInput, Prisma.DocumentosUncheckedUpdateWithoutCamposInput>
+  create: Prisma.XOR<Prisma.DocumentosCreateWithoutCamposInput, Prisma.DocumentosUncheckedCreateWithoutCamposInput>
+  where?: Prisma.DocumentosWhereInput
+}
+
+export type DocumentosUpdateToOneWithWhereWithoutCamposInput = {
+  where?: Prisma.DocumentosWhereInput
+  data: Prisma.XOR<Prisma.DocumentosUpdateWithoutCamposInput, Prisma.DocumentosUncheckedUpdateWithoutCamposInput>
+}
+
+export type DocumentosUpdateWithoutCamposInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruta_archivo?: Prisma.StringFieldUpdateOperationsInput | string
+  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  estado?: Prisma.StringFieldUpdateOperationsInput | string
+  emisor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosCreadosNestedInput
+  asignaciones?: Prisma.AsignacionDocumentoUpdateManyWithoutDocumentoNestedInput
+}
+
+export type DocumentosUncheckedUpdateWithoutCamposInput = {
+  id_documento?: Prisma.IntFieldUpdateOperationsInput | number
+  rut_emisor?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruta_archivo?: Prisma.StringFieldUpdateOperationsInput | string
+  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  estado?: Prisma.StringFieldUpdateOperationsInput | string
+  asignaciones?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutDocumentoNestedInput
 }
 
 export type DocumentosCreateManyEmisorInput = {
@@ -577,6 +658,7 @@ export type DocumentosUpdateWithoutEmisorInput = {
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
   asignaciones?: Prisma.AsignacionDocumentoUpdateManyWithoutDocumentoNestedInput
+  campos?: Prisma.CamposDocumentoUpdateManyWithoutDocumentNestedInput
 }
 
 export type DocumentosUncheckedUpdateWithoutEmisorInput = {
@@ -586,6 +668,7 @@ export type DocumentosUncheckedUpdateWithoutEmisorInput = {
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
   asignaciones?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutDocumentoNestedInput
+  campos?: Prisma.CamposDocumentoUncheckedUpdateManyWithoutDocumentNestedInput
 }
 
 export type DocumentosUncheckedUpdateManyWithoutEmisorInput = {
@@ -603,10 +686,12 @@ export type DocumentosUncheckedUpdateManyWithoutEmisorInput = {
 
 export type DocumentosCountOutputType = {
   asignaciones: number
+  campos: number
 }
 
 export type DocumentosCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   asignaciones?: boolean | DocumentosCountOutputTypeCountAsignacionesArgs
+  campos?: boolean | DocumentosCountOutputTypeCountCamposArgs
 }
 
 /**
@@ -626,6 +711,13 @@ export type DocumentosCountOutputTypeCountAsignacionesArgs<ExtArgs extends runti
   where?: Prisma.AsignacionDocumentoWhereInput
 }
 
+/**
+ * DocumentosCountOutputType without action
+ */
+export type DocumentosCountOutputTypeCountCamposArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CamposDocumentoWhereInput
+}
+
 
 export type DocumentosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_documento?: boolean
@@ -636,6 +728,7 @@ export type DocumentosSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   estado?: boolean
   emisor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Documentos$asignacionesArgs<ExtArgs>
+  campos?: boolean | Prisma.Documentos$camposArgs<ExtArgs>
   _count?: boolean | Prisma.DocumentosCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["documentos"]>
 
@@ -672,6 +765,7 @@ export type DocumentosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type DocumentosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   emisor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Documentos$asignacionesArgs<ExtArgs>
+  campos?: boolean | Prisma.Documentos$camposArgs<ExtArgs>
   _count?: boolean | Prisma.DocumentosCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type DocumentosIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -686,6 +780,7 @@ export type $DocumentosPayload<ExtArgs extends runtime.Types.Extensions.Internal
   objects: {
     emisor: Prisma.$UsuarioPayload<ExtArgs>
     asignaciones: Prisma.$AsignacionDocumentoPayload<ExtArgs>[]
+    campos: Prisma.$CamposDocumentoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id_documento: number
@@ -1090,6 +1185,7 @@ export interface Prisma__DocumentosClient<T, Null = never, ExtArgs extends runti
   readonly [Symbol.toStringTag]: "PrismaPromise"
   emisor<T extends Prisma.UsuarioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuarioDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   asignaciones<T extends Prisma.Documentos$asignacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Documentos$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AsignacionDocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  campos<T extends Prisma.Documentos$camposArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Documentos$camposArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CamposDocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1542,6 +1638,30 @@ export type Documentos$asignacionesArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.AsignacionDocumentoScalarFieldEnum | Prisma.AsignacionDocumentoScalarFieldEnum[]
+}
+
+/**
+ * Documentos.campos
+ */
+export type Documentos$camposArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CamposDocumento
+   */
+  select?: Prisma.CamposDocumentoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CamposDocumento
+   */
+  omit?: Prisma.CamposDocumentoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CamposDocumentoInclude<ExtArgs> | null
+  where?: Prisma.CamposDocumentoWhereInput
+  orderBy?: Prisma.CamposDocumentoOrderByWithRelationInput | Prisma.CamposDocumentoOrderByWithRelationInput[]
+  cursor?: Prisma.CamposDocumentoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CamposDocumentoScalarFieldEnum | Prisma.CamposDocumentoScalarFieldEnum[]
 }
 
 /**

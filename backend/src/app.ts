@@ -1,8 +1,17 @@
 import express from "express";
 
+import asignacionRoutes, {
+  documentoAsignacionRoutes
+} from "./routes/asignacion.routes.js";
 import documentoRoutes from "./routes/documento.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+
+import camposRoutes, {
+  documentoCamposRoutes
+} from "./routes/campos.routes.js";
+
+import valoresRoutes from "./routes/valores.routes.js";
 
 const app = express();
 
@@ -22,5 +31,20 @@ app.use("/api/usuarios", usuarioRoutes);
 
 // Documentos
 app.use("/api/documentos", documentoRoutes);
+
+//Asignacion de documento
+app.use("/api/documentos", documentoAsignacionRoutes);
+
+//Asignacion de documento
+app.use("/api/asignaciones", asignacionRoutes);
+
+//Campos
+app.use("/api/documentos", documentoCamposRoutes);
+
+//Campos
+app.use("/api/campos", camposRoutes);
+
+//Valores de campo
+app.use("/api/asignaciones", valoresRoutes);
 
 export default app;

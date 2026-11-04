@@ -28,14 +28,17 @@ export type AggregateCamposDocumento = {
 
 export type CamposDocumentoAvgAggregateOutputType = {
   id_campo: number | null
+  id_documento: number | null
 }
 
 export type CamposDocumentoSumAggregateOutputType = {
   id_campo: number | null
+  id_documento: number | null
 }
 
 export type CamposDocumentoMinAggregateOutputType = {
   id_campo: number | null
+  id_documento: number | null
   nombre: string | null
   tipo: string | null
   obligatorio: boolean | null
@@ -43,6 +46,7 @@ export type CamposDocumentoMinAggregateOutputType = {
 
 export type CamposDocumentoMaxAggregateOutputType = {
   id_campo: number | null
+  id_documento: number | null
   nombre: string | null
   tipo: string | null
   obligatorio: boolean | null
@@ -50,6 +54,7 @@ export type CamposDocumentoMaxAggregateOutputType = {
 
 export type CamposDocumentoCountAggregateOutputType = {
   id_campo: number
+  id_documento: number
   nombre: number
   tipo: number
   obligatorio: number
@@ -59,14 +64,17 @@ export type CamposDocumentoCountAggregateOutputType = {
 
 export type CamposDocumentoAvgAggregateInputType = {
   id_campo?: true
+  id_documento?: true
 }
 
 export type CamposDocumentoSumAggregateInputType = {
   id_campo?: true
+  id_documento?: true
 }
 
 export type CamposDocumentoMinAggregateInputType = {
   id_campo?: true
+  id_documento?: true
   nombre?: true
   tipo?: true
   obligatorio?: true
@@ -74,6 +82,7 @@ export type CamposDocumentoMinAggregateInputType = {
 
 export type CamposDocumentoMaxAggregateInputType = {
   id_campo?: true
+  id_documento?: true
   nombre?: true
   tipo?: true
   obligatorio?: true
@@ -81,6 +90,7 @@ export type CamposDocumentoMaxAggregateInputType = {
 
 export type CamposDocumentoCountAggregateInputType = {
   id_campo?: true
+  id_documento?: true
   nombre?: true
   tipo?: true
   obligatorio?: true
@@ -175,6 +185,7 @@ export type CamposDocumentoGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 
 export type CamposDocumentoGroupByOutputType = {
   id_campo: number
+  id_documento: number
   nombre: string
   tipo: string
   obligatorio: boolean
@@ -205,17 +216,21 @@ export type CamposDocumentoWhereInput = {
   OR?: Prisma.CamposDocumentoWhereInput[]
   NOT?: Prisma.CamposDocumentoWhereInput | Prisma.CamposDocumentoWhereInput[]
   id_campo?: Prisma.IntFilter<"CamposDocumento"> | number
+  id_documento?: Prisma.IntFilter<"CamposDocumento"> | number
   nombre?: Prisma.StringFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+  document?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   campo?: Prisma.ValoresCampoListRelationFilter
 }
 
 export type CamposDocumentoOrderByWithRelationInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  document?: Prisma.DocumentosOrderByWithRelationInput
   campo?: Prisma.ValoresCampoOrderByRelationAggregateInput
 }
 
@@ -224,14 +239,17 @@ export type CamposDocumentoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CamposDocumentoWhereInput | Prisma.CamposDocumentoWhereInput[]
   OR?: Prisma.CamposDocumentoWhereInput[]
   NOT?: Prisma.CamposDocumentoWhereInput | Prisma.CamposDocumentoWhereInput[]
+  id_documento?: Prisma.IntFilter<"CamposDocumento"> | number
   nombre?: Prisma.StringFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+  document?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   campo?: Prisma.ValoresCampoListRelationFilter
 }, "id_campo">
 
 export type CamposDocumentoOrderByWithAggregationInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
@@ -247,6 +265,7 @@ export type CamposDocumentoScalarWhereWithAggregatesInput = {
   OR?: Prisma.CamposDocumentoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CamposDocumentoScalarWhereWithAggregatesInput | Prisma.CamposDocumentoScalarWhereWithAggregatesInput[]
   id_campo?: Prisma.IntWithAggregatesFilter<"CamposDocumento"> | number
+  id_documento?: Prisma.IntWithAggregatesFilter<"CamposDocumento"> | number
   nombre?: Prisma.StringWithAggregatesFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringWithAggregatesFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolWithAggregatesFilter<"CamposDocumento"> | boolean
@@ -256,11 +275,13 @@ export type CamposDocumentoCreateInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  document: Prisma.DocumentosCreateNestedOneWithoutCamposInput
   campo?: Prisma.ValoresCampoCreateNestedManyWithoutCampoInput
 }
 
 export type CamposDocumentoUncheckedCreateInput = {
   id_campo?: number
+  id_documento: number
   nombre: string
   tipo: string
   obligatorio: boolean
@@ -271,11 +292,13 @@ export type CamposDocumentoUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  document?: Prisma.DocumentosUpdateOneRequiredWithoutCamposNestedInput
   campo?: Prisma.ValoresCampoUpdateManyWithoutCampoNestedInput
 }
 
 export type CamposDocumentoUncheckedUpdateInput = {
   id_campo?: Prisma.IntFieldUpdateOperationsInput | number
+  id_documento?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -284,6 +307,7 @@ export type CamposDocumentoUncheckedUpdateInput = {
 
 export type CamposDocumentoCreateManyInput = {
   id_campo?: number
+  id_documento: number
   nombre: string
   tipo: string
   obligatorio: boolean
@@ -297,9 +321,20 @@ export type CamposDocumentoUpdateManyMutationInput = {
 
 export type CamposDocumentoUncheckedUpdateManyInput = {
   id_campo?: Prisma.IntFieldUpdateOperationsInput | number
+  id_documento?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type CamposDocumentoListRelationFilter = {
+  every?: Prisma.CamposDocumentoWhereInput
+  some?: Prisma.CamposDocumentoWhereInput
+  none?: Prisma.CamposDocumentoWhereInput
+}
+
+export type CamposDocumentoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type CamposDocumentoScalarRelationFilter = {
@@ -309,6 +344,7 @@ export type CamposDocumentoScalarRelationFilter = {
 
 export type CamposDocumentoCountOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
@@ -316,10 +352,12 @@ export type CamposDocumentoCountOrderByAggregateInput = {
 
 export type CamposDocumentoAvgOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
 }
 
 export type CamposDocumentoMaxOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
@@ -327,6 +365,7 @@ export type CamposDocumentoMaxOrderByAggregateInput = {
 
 export type CamposDocumentoMinOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
@@ -334,6 +373,49 @@ export type CamposDocumentoMinOrderByAggregateInput = {
 
 export type CamposDocumentoSumOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
+  id_documento?: Prisma.SortOrder
+}
+
+export type CamposDocumentoCreateNestedManyWithoutDocumentInput = {
+  create?: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput> | Prisma.CamposDocumentoCreateWithoutDocumentInput[] | Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput[]
+  connectOrCreate?: Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput | Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput[]
+  createMany?: Prisma.CamposDocumentoCreateManyDocumentInputEnvelope
+  connect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+}
+
+export type CamposDocumentoUncheckedCreateNestedManyWithoutDocumentInput = {
+  create?: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput> | Prisma.CamposDocumentoCreateWithoutDocumentInput[] | Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput[]
+  connectOrCreate?: Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput | Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput[]
+  createMany?: Prisma.CamposDocumentoCreateManyDocumentInputEnvelope
+  connect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+}
+
+export type CamposDocumentoUpdateManyWithoutDocumentNestedInput = {
+  create?: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput> | Prisma.CamposDocumentoCreateWithoutDocumentInput[] | Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput[]
+  connectOrCreate?: Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput | Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput[]
+  upsert?: Prisma.CamposDocumentoUpsertWithWhereUniqueWithoutDocumentInput | Prisma.CamposDocumentoUpsertWithWhereUniqueWithoutDocumentInput[]
+  createMany?: Prisma.CamposDocumentoCreateManyDocumentInputEnvelope
+  set?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  disconnect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  delete?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  connect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  update?: Prisma.CamposDocumentoUpdateWithWhereUniqueWithoutDocumentInput | Prisma.CamposDocumentoUpdateWithWhereUniqueWithoutDocumentInput[]
+  updateMany?: Prisma.CamposDocumentoUpdateManyWithWhereWithoutDocumentInput | Prisma.CamposDocumentoUpdateManyWithWhereWithoutDocumentInput[]
+  deleteMany?: Prisma.CamposDocumentoScalarWhereInput | Prisma.CamposDocumentoScalarWhereInput[]
+}
+
+export type CamposDocumentoUncheckedUpdateManyWithoutDocumentNestedInput = {
+  create?: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput> | Prisma.CamposDocumentoCreateWithoutDocumentInput[] | Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput[]
+  connectOrCreate?: Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput | Prisma.CamposDocumentoCreateOrConnectWithoutDocumentInput[]
+  upsert?: Prisma.CamposDocumentoUpsertWithWhereUniqueWithoutDocumentInput | Prisma.CamposDocumentoUpsertWithWhereUniqueWithoutDocumentInput[]
+  createMany?: Prisma.CamposDocumentoCreateManyDocumentInputEnvelope
+  set?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  disconnect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  delete?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  connect?: Prisma.CamposDocumentoWhereUniqueInput | Prisma.CamposDocumentoWhereUniqueInput[]
+  update?: Prisma.CamposDocumentoUpdateWithWhereUniqueWithoutDocumentInput | Prisma.CamposDocumentoUpdateWithWhereUniqueWithoutDocumentInput[]
+  updateMany?: Prisma.CamposDocumentoUpdateManyWithWhereWithoutDocumentInput | Prisma.CamposDocumentoUpdateManyWithWhereWithoutDocumentInput[]
+  deleteMany?: Prisma.CamposDocumentoScalarWhereInput | Prisma.CamposDocumentoScalarWhereInput[]
 }
 
 export type CamposDocumentoCreateNestedOneWithoutCampoInput = {
@@ -354,14 +436,68 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type CamposDocumentoCreateWithoutDocumentInput = {
+  nombre: string
+  tipo: string
+  obligatorio: boolean
+  campo?: Prisma.ValoresCampoCreateNestedManyWithoutCampoInput
+}
+
+export type CamposDocumentoUncheckedCreateWithoutDocumentInput = {
+  id_campo?: number
+  nombre: string
+  tipo: string
+  obligatorio: boolean
+  campo?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutCampoInput
+}
+
+export type CamposDocumentoCreateOrConnectWithoutDocumentInput = {
+  where: Prisma.CamposDocumentoWhereUniqueInput
+  create: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput>
+}
+
+export type CamposDocumentoCreateManyDocumentInputEnvelope = {
+  data: Prisma.CamposDocumentoCreateManyDocumentInput | Prisma.CamposDocumentoCreateManyDocumentInput[]
+  skipDuplicates?: boolean
+}
+
+export type CamposDocumentoUpsertWithWhereUniqueWithoutDocumentInput = {
+  where: Prisma.CamposDocumentoWhereUniqueInput
+  update: Prisma.XOR<Prisma.CamposDocumentoUpdateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedUpdateWithoutDocumentInput>
+  create: Prisma.XOR<Prisma.CamposDocumentoCreateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedCreateWithoutDocumentInput>
+}
+
+export type CamposDocumentoUpdateWithWhereUniqueWithoutDocumentInput = {
+  where: Prisma.CamposDocumentoWhereUniqueInput
+  data: Prisma.XOR<Prisma.CamposDocumentoUpdateWithoutDocumentInput, Prisma.CamposDocumentoUncheckedUpdateWithoutDocumentInput>
+}
+
+export type CamposDocumentoUpdateManyWithWhereWithoutDocumentInput = {
+  where: Prisma.CamposDocumentoScalarWhereInput
+  data: Prisma.XOR<Prisma.CamposDocumentoUpdateManyMutationInput, Prisma.CamposDocumentoUncheckedUpdateManyWithoutDocumentInput>
+}
+
+export type CamposDocumentoScalarWhereInput = {
+  AND?: Prisma.CamposDocumentoScalarWhereInput | Prisma.CamposDocumentoScalarWhereInput[]
+  OR?: Prisma.CamposDocumentoScalarWhereInput[]
+  NOT?: Prisma.CamposDocumentoScalarWhereInput | Prisma.CamposDocumentoScalarWhereInput[]
+  id_campo?: Prisma.IntFilter<"CamposDocumento"> | number
+  id_documento?: Prisma.IntFilter<"CamposDocumento"> | number
+  nombre?: Prisma.StringFilter<"CamposDocumento"> | string
+  tipo?: Prisma.StringFilter<"CamposDocumento"> | string
+  obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+}
+
 export type CamposDocumentoCreateWithoutCampoInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  document: Prisma.DocumentosCreateNestedOneWithoutCamposInput
 }
 
 export type CamposDocumentoUncheckedCreateWithoutCampoInput = {
   id_campo?: number
+  id_documento: number
   nombre: string
   tipo: string
   obligatorio: boolean
@@ -387,9 +523,40 @@ export type CamposDocumentoUpdateWithoutCampoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  document?: Prisma.DocumentosUpdateOneRequiredWithoutCamposNestedInput
 }
 
 export type CamposDocumentoUncheckedUpdateWithoutCampoInput = {
+  id_campo?: Prisma.IntFieldUpdateOperationsInput | number
+  id_documento?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type CamposDocumentoCreateManyDocumentInput = {
+  id_campo?: number
+  nombre: string
+  tipo: string
+  obligatorio: boolean
+}
+
+export type CamposDocumentoUpdateWithoutDocumentInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  campo?: Prisma.ValoresCampoUpdateManyWithoutCampoNestedInput
+}
+
+export type CamposDocumentoUncheckedUpdateWithoutDocumentInput = {
+  id_campo?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  campo?: Prisma.ValoresCampoUncheckedUpdateManyWithoutCampoNestedInput
+}
+
+export type CamposDocumentoUncheckedUpdateManyWithoutDocumentInput = {
   id_campo?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -429,49 +596,63 @@ export type CamposDocumentoCountOutputTypeCountCampoArgs<ExtArgs extends runtime
 
 export type CamposDocumentoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_campo?: boolean
+  id_documento?: boolean
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   campo?: boolean | Prisma.CamposDocumento$campoArgs<ExtArgs>
   _count?: boolean | Prisma.CamposDocumentoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["camposDocumento"]>
 
 export type CamposDocumentoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_campo?: boolean
+  id_documento?: boolean
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["camposDocumento"]>
 
 export type CamposDocumentoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_campo?: boolean
+  id_documento?: boolean
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["camposDocumento"]>
 
 export type CamposDocumentoSelectScalar = {
   id_campo?: boolean
+  id_documento?: boolean
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
 }
 
-export type CamposDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_campo" | "nombre" | "tipo" | "obligatorio", ExtArgs["result"]["camposDocumento"]>
+export type CamposDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_campo" | "id_documento" | "nombre" | "tipo" | "obligatorio", ExtArgs["result"]["camposDocumento"]>
 export type CamposDocumentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   campo?: boolean | Prisma.CamposDocumento$campoArgs<ExtArgs>
   _count?: boolean | Prisma.CamposDocumentoCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type CamposDocumentoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type CamposDocumentoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type CamposDocumentoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
+}
+export type CamposDocumentoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
+}
 
 export type $CamposDocumentoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CamposDocumento"
   objects: {
+    document: Prisma.$DocumentosPayload<ExtArgs>
     campo: Prisma.$ValoresCampoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id_campo: number
+    id_documento: number
     nombre: string
     tipo: string
     obligatorio: boolean
@@ -869,6 +1050,7 @@ readonly fields: CamposDocumentoFieldRefs;
  */
 export interface Prisma__CamposDocumentoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  document<T extends Prisma.DocumentosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentosDefaultArgs<ExtArgs>>): Prisma.Prisma__DocumentosClient<runtime.Types.Result.GetResult<Prisma.$DocumentosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   campo<T extends Prisma.CamposDocumento$campoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CamposDocumento$campoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ValoresCampoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -900,6 +1082,7 @@ export interface Prisma__CamposDocumentoClient<T, Null = never, ExtArgs extends 
  */
 export interface CamposDocumentoFieldRefs {
   readonly id_campo: Prisma.FieldRef<"CamposDocumento", 'Int'>
+  readonly id_documento: Prisma.FieldRef<"CamposDocumento", 'Int'>
   readonly nombre: Prisma.FieldRef<"CamposDocumento", 'String'>
   readonly tipo: Prisma.FieldRef<"CamposDocumento", 'String'>
   readonly obligatorio: Prisma.FieldRef<"CamposDocumento", 'Boolean'>
@@ -1152,6 +1335,10 @@ export type CamposDocumentoCreateManyAndReturnArgs<ExtArgs extends runtime.Types
    */
   data: Prisma.CamposDocumentoCreateManyInput | Prisma.CamposDocumentoCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CamposDocumentoIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1222,6 +1409,10 @@ export type CamposDocumentoUpdateManyAndReturnArgs<ExtArgs extends runtime.Types
    * Limit how many CamposDocumentos to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CamposDocumentoIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**

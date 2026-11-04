@@ -121,6 +121,7 @@ export type ValoresCampoScalarFieldEnum = (typeof ValoresCampoScalarFieldEnum)[k
 
 export const CamposDocumentoScalarFieldEnum = {
   id_campo: 'id_campo',
+  id_documento: 'id_documento',
   nombre: 'nombre',
   tipo: 'tipo',
   obligatorio: 'obligatorio'
