@@ -12,6 +12,7 @@ import camposRoutes, {
 } from "./routes/campos.routes.js";
 
 import valoresRoutes from "./routes/valores.routes.js";
+import pdfRoutes from "./routes/pdf.routes.js";
 
 const app = express();
 
@@ -46,5 +47,8 @@ app.use("/api/campos", camposRoutes);
 
 //Valores de campo
 app.use("/api/asignaciones", valoresRoutes);
+
+//PDF
+app.use("/api/asignaciones", pdfRoutes);
 
 export default app;

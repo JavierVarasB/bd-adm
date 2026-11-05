@@ -29,11 +29,23 @@ export type AggregateCamposDocumento = {
 export type CamposDocumentoAvgAggregateOutputType = {
   id_campo: number | null
   id_documento: number | null
+  pagina: number | null
+  posicion_x: number | null
+  posicion_y: number | null
+  ancho: number | null
+  alto: number | null
+  tamano_fuente: number | null
 }
 
 export type CamposDocumentoSumAggregateOutputType = {
   id_campo: number | null
   id_documento: number | null
+  pagina: number | null
+  posicion_x: number | null
+  posicion_y: number | null
+  ancho: number | null
+  alto: number | null
+  tamano_fuente: number | null
 }
 
 export type CamposDocumentoMinAggregateOutputType = {
@@ -42,6 +54,12 @@ export type CamposDocumentoMinAggregateOutputType = {
   nombre: string | null
   tipo: string | null
   obligatorio: boolean | null
+  pagina: number | null
+  posicion_x: number | null
+  posicion_y: number | null
+  ancho: number | null
+  alto: number | null
+  tamano_fuente: number | null
 }
 
 export type CamposDocumentoMaxAggregateOutputType = {
@@ -50,6 +68,12 @@ export type CamposDocumentoMaxAggregateOutputType = {
   nombre: string | null
   tipo: string | null
   obligatorio: boolean | null
+  pagina: number | null
+  posicion_x: number | null
+  posicion_y: number | null
+  ancho: number | null
+  alto: number | null
+  tamano_fuente: number | null
 }
 
 export type CamposDocumentoCountAggregateOutputType = {
@@ -58,6 +82,12 @@ export type CamposDocumentoCountAggregateOutputType = {
   nombre: number
   tipo: number
   obligatorio: number
+  pagina: number
+  posicion_x: number
+  posicion_y: number
+  ancho: number
+  alto: number
+  tamano_fuente: number
   _all: number
 }
 
@@ -65,11 +95,23 @@ export type CamposDocumentoCountAggregateOutputType = {
 export type CamposDocumentoAvgAggregateInputType = {
   id_campo?: true
   id_documento?: true
+  pagina?: true
+  posicion_x?: true
+  posicion_y?: true
+  ancho?: true
+  alto?: true
+  tamano_fuente?: true
 }
 
 export type CamposDocumentoSumAggregateInputType = {
   id_campo?: true
   id_documento?: true
+  pagina?: true
+  posicion_x?: true
+  posicion_y?: true
+  ancho?: true
+  alto?: true
+  tamano_fuente?: true
 }
 
 export type CamposDocumentoMinAggregateInputType = {
@@ -78,6 +120,12 @@ export type CamposDocumentoMinAggregateInputType = {
   nombre?: true
   tipo?: true
   obligatorio?: true
+  pagina?: true
+  posicion_x?: true
+  posicion_y?: true
+  ancho?: true
+  alto?: true
+  tamano_fuente?: true
 }
 
 export type CamposDocumentoMaxAggregateInputType = {
@@ -86,6 +134,12 @@ export type CamposDocumentoMaxAggregateInputType = {
   nombre?: true
   tipo?: true
   obligatorio?: true
+  pagina?: true
+  posicion_x?: true
+  posicion_y?: true
+  ancho?: true
+  alto?: true
+  tamano_fuente?: true
 }
 
 export type CamposDocumentoCountAggregateInputType = {
@@ -94,6 +148,12 @@ export type CamposDocumentoCountAggregateInputType = {
   nombre?: true
   tipo?: true
   obligatorio?: true
+  pagina?: true
+  posicion_x?: true
+  posicion_y?: true
+  ancho?: true
+  alto?: true
+  tamano_fuente?: true
   _all?: true
 }
 
@@ -189,6 +249,12 @@ export type CamposDocumentoGroupByOutputType = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina: number
+  posicion_x: number | null
+  posicion_y: number | null
+  ancho: number | null
+  alto: number | null
+  tamano_fuente: number
   _count: CamposDocumentoCountAggregateOutputType | null
   _avg: CamposDocumentoAvgAggregateOutputType | null
   _sum: CamposDocumentoSumAggregateOutputType | null
@@ -220,6 +286,12 @@ export type CamposDocumentoWhereInput = {
   nombre?: Prisma.StringFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+  pagina?: Prisma.IntFilter<"CamposDocumento"> | number
+  posicion_x?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  posicion_y?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  ancho?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  alto?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  tamano_fuente?: Prisma.IntFilter<"CamposDocumento"> | number
   document?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   campo?: Prisma.ValoresCampoListRelationFilter
 }
@@ -230,6 +302,12 @@ export type CamposDocumentoOrderByWithRelationInput = {
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrderInput | Prisma.SortOrder
+  posicion_y?: Prisma.SortOrderInput | Prisma.SortOrder
+  ancho?: Prisma.SortOrderInput | Prisma.SortOrder
+  alto?: Prisma.SortOrderInput | Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
   document?: Prisma.DocumentosOrderByWithRelationInput
   campo?: Prisma.ValoresCampoOrderByRelationAggregateInput
 }
@@ -243,6 +321,12 @@ export type CamposDocumentoWhereUniqueInput = Prisma.AtLeast<{
   nombre?: Prisma.StringFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+  pagina?: Prisma.IntFilter<"CamposDocumento"> | number
+  posicion_x?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  posicion_y?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  ancho?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  alto?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  tamano_fuente?: Prisma.IntFilter<"CamposDocumento"> | number
   document?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   campo?: Prisma.ValoresCampoListRelationFilter
 }, "id_campo">
@@ -253,6 +337,12 @@ export type CamposDocumentoOrderByWithAggregationInput = {
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrderInput | Prisma.SortOrder
+  posicion_y?: Prisma.SortOrderInput | Prisma.SortOrder
+  ancho?: Prisma.SortOrderInput | Prisma.SortOrder
+  alto?: Prisma.SortOrderInput | Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
   _count?: Prisma.CamposDocumentoCountOrderByAggregateInput
   _avg?: Prisma.CamposDocumentoAvgOrderByAggregateInput
   _max?: Prisma.CamposDocumentoMaxOrderByAggregateInput
@@ -269,12 +359,24 @@ export type CamposDocumentoScalarWhereWithAggregatesInput = {
   nombre?: Prisma.StringWithAggregatesFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringWithAggregatesFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolWithAggregatesFilter<"CamposDocumento"> | boolean
+  pagina?: Prisma.IntWithAggregatesFilter<"CamposDocumento"> | number
+  posicion_x?: Prisma.FloatNullableWithAggregatesFilter<"CamposDocumento"> | number | null
+  posicion_y?: Prisma.FloatNullableWithAggregatesFilter<"CamposDocumento"> | number | null
+  ancho?: Prisma.FloatNullableWithAggregatesFilter<"CamposDocumento"> | number | null
+  alto?: Prisma.FloatNullableWithAggregatesFilter<"CamposDocumento"> | number | null
+  tamano_fuente?: Prisma.IntWithAggregatesFilter<"CamposDocumento"> | number
 }
 
 export type CamposDocumentoCreateInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
   document: Prisma.DocumentosCreateNestedOneWithoutCamposInput
   campo?: Prisma.ValoresCampoCreateNestedManyWithoutCampoInput
 }
@@ -285,6 +387,12 @@ export type CamposDocumentoUncheckedCreateInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
   campo?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutCampoInput
 }
 
@@ -292,6 +400,12 @@ export type CamposDocumentoUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
   document?: Prisma.DocumentosUpdateOneRequiredWithoutCamposNestedInput
   campo?: Prisma.ValoresCampoUpdateManyWithoutCampoNestedInput
 }
@@ -302,6 +416,12 @@ export type CamposDocumentoUncheckedUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
   campo?: Prisma.ValoresCampoUncheckedUpdateManyWithoutCampoNestedInput
 }
 
@@ -311,12 +431,24 @@ export type CamposDocumentoCreateManyInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
 }
 
 export type CamposDocumentoUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CamposDocumentoUncheckedUpdateManyInput = {
@@ -325,6 +457,12 @@ export type CamposDocumentoUncheckedUpdateManyInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CamposDocumentoListRelationFilter = {
@@ -348,11 +486,23 @@ export type CamposDocumentoCountOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrder
+  posicion_y?: Prisma.SortOrder
+  ancho?: Prisma.SortOrder
+  alto?: Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
 }
 
 export type CamposDocumentoAvgOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
   id_documento?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrder
+  posicion_y?: Prisma.SortOrder
+  ancho?: Prisma.SortOrder
+  alto?: Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
 }
 
 export type CamposDocumentoMaxOrderByAggregateInput = {
@@ -361,6 +511,12 @@ export type CamposDocumentoMaxOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrder
+  posicion_y?: Prisma.SortOrder
+  ancho?: Prisma.SortOrder
+  alto?: Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
 }
 
 export type CamposDocumentoMinOrderByAggregateInput = {
@@ -369,11 +525,23 @@ export type CamposDocumentoMinOrderByAggregateInput = {
   nombre?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
   obligatorio?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrder
+  posicion_y?: Prisma.SortOrder
+  ancho?: Prisma.SortOrder
+  alto?: Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
 }
 
 export type CamposDocumentoSumOrderByAggregateInput = {
   id_campo?: Prisma.SortOrder
   id_documento?: Prisma.SortOrder
+  pagina?: Prisma.SortOrder
+  posicion_x?: Prisma.SortOrder
+  posicion_y?: Prisma.SortOrder
+  ancho?: Prisma.SortOrder
+  alto?: Prisma.SortOrder
+  tamano_fuente?: Prisma.SortOrder
 }
 
 export type CamposDocumentoCreateNestedManyWithoutDocumentInput = {
@@ -436,10 +604,24 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type CamposDocumentoCreateWithoutDocumentInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
   campo?: Prisma.ValoresCampoCreateNestedManyWithoutCampoInput
 }
 
@@ -448,6 +630,12 @@ export type CamposDocumentoUncheckedCreateWithoutDocumentInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
   campo?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutCampoInput
 }
 
@@ -486,12 +674,24 @@ export type CamposDocumentoScalarWhereInput = {
   nombre?: Prisma.StringFilter<"CamposDocumento"> | string
   tipo?: Prisma.StringFilter<"CamposDocumento"> | string
   obligatorio?: Prisma.BoolFilter<"CamposDocumento"> | boolean
+  pagina?: Prisma.IntFilter<"CamposDocumento"> | number
+  posicion_x?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  posicion_y?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  ancho?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  alto?: Prisma.FloatNullableFilter<"CamposDocumento"> | number | null
+  tamano_fuente?: Prisma.IntFilter<"CamposDocumento"> | number
 }
 
 export type CamposDocumentoCreateWithoutCampoInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
   document: Prisma.DocumentosCreateNestedOneWithoutCamposInput
 }
 
@@ -501,6 +701,12 @@ export type CamposDocumentoUncheckedCreateWithoutCampoInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
 }
 
 export type CamposDocumentoCreateOrConnectWithoutCampoInput = {
@@ -523,6 +729,12 @@ export type CamposDocumentoUpdateWithoutCampoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
   document?: Prisma.DocumentosUpdateOneRequiredWithoutCamposNestedInput
 }
 
@@ -532,6 +744,12 @@ export type CamposDocumentoUncheckedUpdateWithoutCampoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CamposDocumentoCreateManyDocumentInput = {
@@ -539,12 +757,24 @@ export type CamposDocumentoCreateManyDocumentInput = {
   nombre: string
   tipo: string
   obligatorio: boolean
+  pagina?: number
+  posicion_x?: number | null
+  posicion_y?: number | null
+  ancho?: number | null
+  alto?: number | null
+  tamano_fuente?: number
 }
 
 export type CamposDocumentoUpdateWithoutDocumentInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
   campo?: Prisma.ValoresCampoUpdateManyWithoutCampoNestedInput
 }
 
@@ -553,6 +783,12 @@ export type CamposDocumentoUncheckedUpdateWithoutDocumentInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
   campo?: Prisma.ValoresCampoUncheckedUpdateManyWithoutCampoNestedInput
 }
 
@@ -561,6 +797,12 @@ export type CamposDocumentoUncheckedUpdateManyWithoutDocumentInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   obligatorio?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  pagina?: Prisma.IntFieldUpdateOperationsInput | number
+  posicion_x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posicion_y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ancho?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  alto?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tamano_fuente?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -600,6 +842,12 @@ export type CamposDocumentoSelect<ExtArgs extends runtime.Types.Extensions.Inter
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  pagina?: boolean
+  posicion_x?: boolean
+  posicion_y?: boolean
+  ancho?: boolean
+  alto?: boolean
+  tamano_fuente?: boolean
   document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   campo?: boolean | Prisma.CamposDocumento$campoArgs<ExtArgs>
   _count?: boolean | Prisma.CamposDocumentoCountOutputTypeDefaultArgs<ExtArgs>
@@ -611,6 +859,12 @@ export type CamposDocumentoSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  pagina?: boolean
+  posicion_x?: boolean
+  posicion_y?: boolean
+  ancho?: boolean
+  alto?: boolean
+  tamano_fuente?: boolean
   document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["camposDocumento"]>
 
@@ -620,6 +874,12 @@ export type CamposDocumentoSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  pagina?: boolean
+  posicion_x?: boolean
+  posicion_y?: boolean
+  ancho?: boolean
+  alto?: boolean
+  tamano_fuente?: boolean
   document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["camposDocumento"]>
 
@@ -629,9 +889,15 @@ export type CamposDocumentoSelectScalar = {
   nombre?: boolean
   tipo?: boolean
   obligatorio?: boolean
+  pagina?: boolean
+  posicion_x?: boolean
+  posicion_y?: boolean
+  ancho?: boolean
+  alto?: boolean
+  tamano_fuente?: boolean
 }
 
-export type CamposDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_campo" | "id_documento" | "nombre" | "tipo" | "obligatorio", ExtArgs["result"]["camposDocumento"]>
+export type CamposDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_campo" | "id_documento" | "nombre" | "tipo" | "obligatorio" | "pagina" | "posicion_x" | "posicion_y" | "ancho" | "alto" | "tamano_fuente", ExtArgs["result"]["camposDocumento"]>
 export type CamposDocumentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   document?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   campo?: boolean | Prisma.CamposDocumento$campoArgs<ExtArgs>
@@ -656,6 +922,12 @@ export type $CamposDocumentoPayload<ExtArgs extends runtime.Types.Extensions.Int
     nombre: string
     tipo: string
     obligatorio: boolean
+    pagina: number
+    posicion_x: number | null
+    posicion_y: number | null
+    ancho: number | null
+    alto: number | null
+    tamano_fuente: number
   }, ExtArgs["result"]["camposDocumento"]>
   composites: {}
 }
@@ -1086,6 +1358,12 @@ export interface CamposDocumentoFieldRefs {
   readonly nombre: Prisma.FieldRef<"CamposDocumento", 'String'>
   readonly tipo: Prisma.FieldRef<"CamposDocumento", 'String'>
   readonly obligatorio: Prisma.FieldRef<"CamposDocumento", 'Boolean'>
+  readonly pagina: Prisma.FieldRef<"CamposDocumento", 'Int'>
+  readonly posicion_x: Prisma.FieldRef<"CamposDocumento", 'Float'>
+  readonly posicion_y: Prisma.FieldRef<"CamposDocumento", 'Float'>
+  readonly ancho: Prisma.FieldRef<"CamposDocumento", 'Float'>
+  readonly alto: Prisma.FieldRef<"CamposDocumento", 'Float'>
+  readonly tamano_fuente: Prisma.FieldRef<"CamposDocumento", 'Int'>
 }
     
 

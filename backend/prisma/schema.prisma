@@ -67,6 +67,7 @@ model AsignacionDocumento {
   fecha_envio DateTime?
   fecha_visualizacion DateTime?
   archivo_firmado String?
+  archivo_completado String?
 
   documento Documentos @relation(fields:[id_documento],references:[id_documento])
   receptor Usuario @relation(fields:[rut_receptor],references:[rut])
@@ -104,8 +105,18 @@ model CamposDocumento {
   tipo String
   obligatorio Boolean
 
-  document Documentos @relation(fields:[id_documento],references:[id_documento])
+  // Página del documento, comenzando desde 1
+  pagina Int @default(1)
+
+  // Coordenadas y dimensiones expresadas en porcentajes (0-100)
+  posicion_x Float?
+  posicion_y Float?
+  ancho Float?
+  alto Float?
+
+  tamano_fuente Int @default(10)
+
+  document Documentos @relation(fields: [id_documento],references: [id_documento])
 
   campo ValoresCampo[]
 }
-

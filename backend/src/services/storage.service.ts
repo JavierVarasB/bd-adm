@@ -81,3 +81,45 @@ export const eliminarArchivo = async (
 
   return data;
 };
+
+
+
+
+export const descargarArchivoBuffer = async (
+  rutaArchivo: string
+): Promise<Buffer> => {
+
+  const { data, error } = await supabase.storage
+    .from("almacen_documentos")
+    .download(rutaArchivo);
+
+  if (error || !data) {
+    throw new Error(
+      `Error al descargar archivo: ${error?.message}`
+    );
+  }
+
+  const arrayBuffer = await data.arrayBuffer();
+
+  return Buffer.from(arrayBuffer);
+};
+
+
+export const subirArchivoBuffer = async (
+  rutaArchivo: string,
+  archivo: Buffer
+): Promise<void> => {
+
+  const { error } = await supabase.storage
+    .from("almacen_documentos")
+    .upload(rutaArchivo, archivo, {
+      contentType: "application/pdf",
+      upsert: false
+    });
+
+  if (error) {
+    throw new Error(
+      `Error al subir archivo: ${error.message}`
+    );
+  }
+};

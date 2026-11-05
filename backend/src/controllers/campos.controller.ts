@@ -7,7 +7,8 @@ import {
   eliminarCampo,
   ErrorCampo,
   TIPOS_CAMPO,
-  type DatosCampo
+  type DatosCampo,
+  type TipoCampo
 } from "../services/campos.service.js";
 
 
@@ -39,29 +40,51 @@ const validarDatosCampo = (
 ): Partial<DatosCampo> | null => {
   if (!esObjeto(valor)) return null;
 
+  const permitidas = [
+    "nombre",
+    "tipo",
+    "obligatorio",
+    "pagina",
+    "posicion_x",
+    "posicion_y",
+    "ancho",
+    "alto",
+    "tamano_fuente"
+  ];
+
   const claves = Object.keys(valor);
-  const permitidas = ["nombre", "tipo", "obligatorio"];
 
   if (
     claves.length === 0 ||
     claves.some(c => !permitidas.includes(c))
-  ) return null;
+  ) {
+    return null;
+  }
 
-  const { nombre, tipo, obligatorio } = valor;
+  const { nombre, tipo, obligatorio,
+    pagina, posicion_x, posicion_y,
+    ancho, alto, tamano_fuente } = valor;
 
-  if (!parcial && claves.length !== 3) return null;
+  if (
+    !parcial &&
+    !["nombre", "tipo", "obligatorio"].every(
+      c => claves.includes(c)
+    )
+  ) {
+    return null;
+  }
 
   if (
     nombre !== undefined &&
     (typeof nombre !== "string" ||
-     nombre.trim().length === 0 ||
-     nombre.trim().length > 150)
+      nombre.trim().length === 0 ||
+      nombre.trim().length > 150)
   ) return null;
 
   if (
     tipo !== undefined &&
     (typeof tipo !== "string" ||
-     !TIPOS_CAMPO.some(t => t === tipo))
+      !TIPOS_CAMPO.some(t => t === tipo))
   ) return null;
 
   if (
@@ -69,12 +92,57 @@ const validarDatosCampo = (
     typeof obligatorio !== "boolean"
   ) return null;
 
+  if (
+    pagina !== undefined &&
+    (!Number.isInteger(pagina) || (pagina as number) < 1)
+  ) return null;
+
+  for (const coordenada of [
+    posicion_x, posicion_y, ancho, alto
+  ]) {
+    if (
+      coordenada !== undefined &&
+      (
+        typeof coordenada !== "number" ||
+        !Number.isFinite(coordenada) ||
+        coordenada < 0 ||
+        coordenada > 100
+      )
+    ) return null;
+  }
+
+  if (
+  tamano_fuente !== undefined &&
+  (
+    typeof tamano_fuente !== "number" ||
+    !Number.isInteger(tamano_fuente) ||
+    tamano_fuente < 6 ||
+    tamano_fuente > 48
+  )
+) return null;
+
+  // Las posiciones deben enviarse completas
+  const posiciones = [
+    posicion_x, posicion_y, ancho, alto
+  ];
+
+  if (
+    posiciones.some(p => p !== undefined) &&
+    !posiciones.every(p => p !== undefined)
+  ) return null;
+
   return {
     ...(nombre !== undefined && { nombre: nombre.trim() }),
-    ...(tipo !== undefined && {
-      tipo: tipo as DatosCampo["tipo"]
-    }),
-    ...(obligatorio !== undefined && { obligatorio })
+    ...(tipo !== undefined && { tipo: tipo as TipoCampo }),
+    ...(obligatorio !== undefined && { obligatorio }),
+    ...(pagina !== undefined && { pagina: pagina as number }),
+    ...(posicion_x !== undefined && { posicion_x: posicion_x as number }),
+    ...(posicion_y !== undefined && { posicion_y: posicion_y as number }),
+    ...(ancho !== undefined && { ancho: ancho as number }),
+    ...(alto !== undefined && { alto: alto as number }),
+    ...(tamano_fuente !== undefined && {
+      tamano_fuente: tamano_fuente as number
+    })
   };
 };
 

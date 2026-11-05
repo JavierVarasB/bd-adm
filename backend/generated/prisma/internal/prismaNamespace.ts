@@ -854,7 +854,8 @@ export const AsignacionDocumentoScalarFieldEnum = {
   estado: 'estado',
   fecha_envio: 'fecha_envio',
   fecha_visualizacion: 'fecha_visualizacion',
-  archivo_firmado: 'archivo_firmado'
+  archivo_firmado: 'archivo_firmado',
+  archivo_completado: 'archivo_completado'
 } as const
 
 export type AsignacionDocumentoScalarFieldEnum = (typeof AsignacionDocumentoScalarFieldEnum)[keyof typeof AsignacionDocumentoScalarFieldEnum]
@@ -875,7 +876,13 @@ export const CamposDocumentoScalarFieldEnum = {
   id_documento: 'id_documento',
   nombre: 'nombre',
   tipo: 'tipo',
-  obligatorio: 'obligatorio'
+  obligatorio: 'obligatorio',
+  pagina: 'pagina',
+  posicion_x: 'posicion_x',
+  posicion_y: 'posicion_y',
+  ancho: 'ancho',
+  alto: 'alto',
+  tamano_fuente: 'tamano_fuente'
 } as const
 
 export type CamposDocumentoScalarFieldEnum = (typeof CamposDocumentoScalarFieldEnum)[keyof typeof CamposDocumentoScalarFieldEnum]

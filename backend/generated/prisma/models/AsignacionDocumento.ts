@@ -46,6 +46,7 @@ export type AsignacionDocumentoMinAggregateOutputType = {
   fecha_envio: Date | null
   fecha_visualizacion: Date | null
   archivo_firmado: string | null
+  archivo_completado: string | null
 }
 
 export type AsignacionDocumentoMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type AsignacionDocumentoMaxAggregateOutputType = {
   fecha_envio: Date | null
   fecha_visualizacion: Date | null
   archivo_firmado: string | null
+  archivo_completado: string | null
 }
 
 export type AsignacionDocumentoCountAggregateOutputType = {
@@ -66,6 +68,7 @@ export type AsignacionDocumentoCountAggregateOutputType = {
   fecha_envio: number
   fecha_visualizacion: number
   archivo_firmado: number
+  archivo_completado: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type AsignacionDocumentoMinAggregateInputType = {
   fecha_envio?: true
   fecha_visualizacion?: true
   archivo_firmado?: true
+  archivo_completado?: true
 }
 
 export type AsignacionDocumentoMaxAggregateInputType = {
@@ -100,6 +104,7 @@ export type AsignacionDocumentoMaxAggregateInputType = {
   fecha_envio?: true
   fecha_visualizacion?: true
   archivo_firmado?: true
+  archivo_completado?: true
 }
 
 export type AsignacionDocumentoCountAggregateInputType = {
@@ -110,6 +115,7 @@ export type AsignacionDocumentoCountAggregateInputType = {
   fecha_envio?: true
   fecha_visualizacion?: true
   archivo_firmado?: true
+  archivo_completado?: true
   _all?: true
 }
 
@@ -207,6 +213,7 @@ export type AsignacionDocumentoGroupByOutputType = {
   fecha_envio: Date | null
   fecha_visualizacion: Date | null
   archivo_firmado: string | null
+  archivo_completado: string | null
   _count: AsignacionDocumentoCountAggregateOutputType | null
   _avg: AsignacionDocumentoAvgAggregateOutputType | null
   _sum: AsignacionDocumentoSumAggregateOutputType | null
@@ -240,6 +247,7 @@ export type AsignacionDocumentoWhereInput = {
   fecha_envio?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   fecha_visualizacion?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   archivo_firmado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
+  archivo_completado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
   documento?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   receptor?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   valores?: Prisma.ValoresCampoListRelationFilter
@@ -253,6 +261,7 @@ export type AsignacionDocumentoOrderByWithRelationInput = {
   fecha_envio?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_visualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_firmado?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivo_completado?: Prisma.SortOrderInput | Prisma.SortOrder
   documento?: Prisma.DocumentosOrderByWithRelationInput
   receptor?: Prisma.UsuarioOrderByWithRelationInput
   valores?: Prisma.ValoresCampoOrderByRelationAggregateInput
@@ -270,6 +279,7 @@ export type AsignacionDocumentoWhereUniqueInput = Prisma.AtLeast<{
   fecha_envio?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   fecha_visualizacion?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   archivo_firmado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
+  archivo_completado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
   documento?: Prisma.XOR<Prisma.DocumentosScalarRelationFilter, Prisma.DocumentosWhereInput>
   receptor?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
   valores?: Prisma.ValoresCampoListRelationFilter
@@ -283,6 +293,7 @@ export type AsignacionDocumentoOrderByWithAggregationInput = {
   fecha_envio?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_visualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_firmado?: Prisma.SortOrderInput | Prisma.SortOrder
+  archivo_completado?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AsignacionDocumentoCountOrderByAggregateInput
   _avg?: Prisma.AsignacionDocumentoAvgOrderByAggregateInput
   _max?: Prisma.AsignacionDocumentoMaxOrderByAggregateInput
@@ -301,6 +312,7 @@ export type AsignacionDocumentoScalarWhereWithAggregatesInput = {
   fecha_envio?: Prisma.DateTimeNullableWithAggregatesFilter<"AsignacionDocumento"> | Date | string | null
   fecha_visualizacion?: Prisma.DateTimeNullableWithAggregatesFilter<"AsignacionDocumento"> | Date | string | null
   archivo_firmado?: Prisma.StringNullableWithAggregatesFilter<"AsignacionDocumento"> | string | null
+  archivo_completado?: Prisma.StringNullableWithAggregatesFilter<"AsignacionDocumento"> | string | null
 }
 
 export type AsignacionDocumentoCreateInput = {
@@ -308,6 +320,7 @@ export type AsignacionDocumentoCreateInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   documento: Prisma.DocumentosCreateNestedOneWithoutAsignacionesInput
   receptor: Prisma.UsuarioCreateNestedOneWithoutDocumentosRecibidosInput
   valores?: Prisma.ValoresCampoCreateNestedManyWithoutAsignacionInput
@@ -321,6 +334,7 @@ export type AsignacionDocumentoUncheckedCreateInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   valores?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutAsignacionInput
 }
 
@@ -329,6 +343,7 @@ export type AsignacionDocumentoUpdateInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documento?: Prisma.DocumentosUpdateOneRequiredWithoutAsignacionesNestedInput
   receptor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosRecibidosNestedInput
   valores?: Prisma.ValoresCampoUpdateManyWithoutAsignacionNestedInput
@@ -342,6 +357,7 @@ export type AsignacionDocumentoUncheckedUpdateInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valores?: Prisma.ValoresCampoUncheckedUpdateManyWithoutAsignacionNestedInput
 }
 
@@ -353,6 +369,7 @@ export type AsignacionDocumentoCreateManyInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
 }
 
 export type AsignacionDocumentoUpdateManyMutationInput = {
@@ -360,6 +377,7 @@ export type AsignacionDocumentoUpdateManyMutationInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AsignacionDocumentoUncheckedUpdateManyInput = {
@@ -370,6 +388,7 @@ export type AsignacionDocumentoUncheckedUpdateManyInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AsignacionDocumentoListRelationFilter = {
@@ -395,6 +414,7 @@ export type AsignacionDocumentoCountOrderByAggregateInput = {
   fecha_envio?: Prisma.SortOrder
   fecha_visualizacion?: Prisma.SortOrder
   archivo_firmado?: Prisma.SortOrder
+  archivo_completado?: Prisma.SortOrder
 }
 
 export type AsignacionDocumentoAvgOrderByAggregateInput = {
@@ -411,6 +431,7 @@ export type AsignacionDocumentoMaxOrderByAggregateInput = {
   fecha_envio?: Prisma.SortOrder
   fecha_visualizacion?: Prisma.SortOrder
   archivo_firmado?: Prisma.SortOrder
+  archivo_completado?: Prisma.SortOrder
 }
 
 export type AsignacionDocumentoMinOrderByAggregateInput = {
@@ -421,6 +442,7 @@ export type AsignacionDocumentoMinOrderByAggregateInput = {
   fecha_envio?: Prisma.SortOrder
   fecha_visualizacion?: Prisma.SortOrder
   archivo_firmado?: Prisma.SortOrder
+  archivo_completado?: Prisma.SortOrder
 }
 
 export type AsignacionDocumentoSumOrderByAggregateInput = {
@@ -541,6 +563,7 @@ export type AsignacionDocumentoCreateWithoutReceptorInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   documento: Prisma.DocumentosCreateNestedOneWithoutAsignacionesInput
   valores?: Prisma.ValoresCampoCreateNestedManyWithoutAsignacionInput
 }
@@ -552,6 +575,7 @@ export type AsignacionDocumentoUncheckedCreateWithoutReceptorInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   valores?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutAsignacionInput
 }
 
@@ -592,6 +616,7 @@ export type AsignacionDocumentoScalarWhereInput = {
   fecha_envio?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   fecha_visualizacion?: Prisma.DateTimeNullableFilter<"AsignacionDocumento"> | Date | string | null
   archivo_firmado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
+  archivo_completado?: Prisma.StringNullableFilter<"AsignacionDocumento"> | string | null
 }
 
 export type AsignacionDocumentoCreateWithoutDocumentoInput = {
@@ -599,6 +624,7 @@ export type AsignacionDocumentoCreateWithoutDocumentoInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   receptor: Prisma.UsuarioCreateNestedOneWithoutDocumentosRecibidosInput
   valores?: Prisma.ValoresCampoCreateNestedManyWithoutAsignacionInput
 }
@@ -610,6 +636,7 @@ export type AsignacionDocumentoUncheckedCreateWithoutDocumentoInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   valores?: Prisma.ValoresCampoUncheckedCreateNestedManyWithoutAsignacionInput
 }
 
@@ -644,6 +671,7 @@ export type AsignacionDocumentoCreateWithoutValoresInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
   documento: Prisma.DocumentosCreateNestedOneWithoutAsignacionesInput
   receptor: Prisma.UsuarioCreateNestedOneWithoutDocumentosRecibidosInput
 }
@@ -656,6 +684,7 @@ export type AsignacionDocumentoUncheckedCreateWithoutValoresInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
 }
 
 export type AsignacionDocumentoCreateOrConnectWithoutValoresInput = {
@@ -679,6 +708,7 @@ export type AsignacionDocumentoUpdateWithoutValoresInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documento?: Prisma.DocumentosUpdateOneRequiredWithoutAsignacionesNestedInput
   receptor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosRecibidosNestedInput
 }
@@ -691,6 +721,7 @@ export type AsignacionDocumentoUncheckedUpdateWithoutValoresInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AsignacionDocumentoCreateManyReceptorInput = {
@@ -700,6 +731,7 @@ export type AsignacionDocumentoCreateManyReceptorInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
 }
 
 export type AsignacionDocumentoUpdateWithoutReceptorInput = {
@@ -707,6 +739,7 @@ export type AsignacionDocumentoUpdateWithoutReceptorInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documento?: Prisma.DocumentosUpdateOneRequiredWithoutAsignacionesNestedInput
   valores?: Prisma.ValoresCampoUpdateManyWithoutAsignacionNestedInput
 }
@@ -718,6 +751,7 @@ export type AsignacionDocumentoUncheckedUpdateWithoutReceptorInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valores?: Prisma.ValoresCampoUncheckedUpdateManyWithoutAsignacionNestedInput
 }
 
@@ -728,6 +762,7 @@ export type AsignacionDocumentoUncheckedUpdateManyWithoutReceptorInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AsignacionDocumentoCreateManyDocumentoInput = {
@@ -737,6 +772,7 @@ export type AsignacionDocumentoCreateManyDocumentoInput = {
   fecha_envio?: Date | string | null
   fecha_visualizacion?: Date | string | null
   archivo_firmado?: string | null
+  archivo_completado?: string | null
 }
 
 export type AsignacionDocumentoUpdateWithoutDocumentoInput = {
@@ -744,6 +780,7 @@ export type AsignacionDocumentoUpdateWithoutDocumentoInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   receptor?: Prisma.UsuarioUpdateOneRequiredWithoutDocumentosRecibidosNestedInput
   valores?: Prisma.ValoresCampoUpdateManyWithoutAsignacionNestedInput
 }
@@ -755,6 +792,7 @@ export type AsignacionDocumentoUncheckedUpdateWithoutDocumentoInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valores?: Prisma.ValoresCampoUncheckedUpdateManyWithoutAsignacionNestedInput
 }
 
@@ -765,6 +803,7 @@ export type AsignacionDocumentoUncheckedUpdateManyWithoutDocumentoInput = {
   fecha_envio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_visualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_firmado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  archivo_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -806,6 +845,7 @@ export type AsignacionDocumentoSelect<ExtArgs extends runtime.Types.Extensions.I
   fecha_envio?: boolean
   fecha_visualizacion?: boolean
   archivo_firmado?: boolean
+  archivo_completado?: boolean
   documento?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   receptor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   valores?: boolean | Prisma.AsignacionDocumento$valoresArgs<ExtArgs>
@@ -820,6 +860,7 @@ export type AsignacionDocumentoSelectCreateManyAndReturn<ExtArgs extends runtime
   fecha_envio?: boolean
   fecha_visualizacion?: boolean
   archivo_firmado?: boolean
+  archivo_completado?: boolean
   documento?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   receptor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["asignacionDocumento"]>
@@ -832,6 +873,7 @@ export type AsignacionDocumentoSelectUpdateManyAndReturn<ExtArgs extends runtime
   fecha_envio?: boolean
   fecha_visualizacion?: boolean
   archivo_firmado?: boolean
+  archivo_completado?: boolean
   documento?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   receptor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["asignacionDocumento"]>
@@ -844,9 +886,10 @@ export type AsignacionDocumentoSelectScalar = {
   fecha_envio?: boolean
   fecha_visualizacion?: boolean
   archivo_firmado?: boolean
+  archivo_completado?: boolean
 }
 
-export type AsignacionDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_asignacion" | "id_documento" | "rut_receptor" | "estado" | "fecha_envio" | "fecha_visualizacion" | "archivo_firmado", ExtArgs["result"]["asignacionDocumento"]>
+export type AsignacionDocumentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_asignacion" | "id_documento" | "rut_receptor" | "estado" | "fecha_envio" | "fecha_visualizacion" | "archivo_firmado" | "archivo_completado", ExtArgs["result"]["asignacionDocumento"]>
 export type AsignacionDocumentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documento?: boolean | Prisma.DocumentosDefaultArgs<ExtArgs>
   receptor?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
@@ -877,6 +920,7 @@ export type $AsignacionDocumentoPayload<ExtArgs extends runtime.Types.Extensions
     fecha_envio: Date | null
     fecha_visualizacion: Date | null
     archivo_firmado: string | null
+    archivo_completado: string | null
   }, ExtArgs["result"]["asignacionDocumento"]>
   composites: {}
 }
@@ -1310,6 +1354,7 @@ export interface AsignacionDocumentoFieldRefs {
   readonly fecha_envio: Prisma.FieldRef<"AsignacionDocumento", 'DateTime'>
   readonly fecha_visualizacion: Prisma.FieldRef<"AsignacionDocumento", 'DateTime'>
   readonly archivo_firmado: Prisma.FieldRef<"AsignacionDocumento", 'String'>
+  readonly archivo_completado: Prisma.FieldRef<"AsignacionDocumento", 'String'>
 }
     
 

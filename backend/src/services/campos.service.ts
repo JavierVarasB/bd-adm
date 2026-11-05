@@ -14,6 +14,13 @@ export interface DatosCampo {
   nombre: string;
   tipo: TipoCampo;
   obligatorio: boolean;
+
+  pagina?: number;
+  posicion_x?: number;
+  posicion_y?: number;
+  ancho?: number;
+  alto?: number;
+  tamano_fuente?: number;
 }
 
 export class ErrorCampo extends Error {
@@ -74,7 +81,13 @@ export const crearCampo = async (
   rol: Rol,
   datos: DatosCampo
 ) => {
-  await comprobarAccesoDocumento(idDocumento, rut, rol, true);
+  await comprobarAccesoDocumento(
+    idDocumento,
+    rut,
+    rol,
+    true
+  );
+
   await comprobarEditable(idDocumento);
 
   return prisma.camposDocumento.create({
@@ -82,12 +95,23 @@ export const crearCampo = async (
       nombre: datos.nombre,
       tipo: datos.tipo,
       obligatorio: datos.obligatorio,
+
+      pagina: datos.pagina ?? 1,
+      posicion_x: datos.posicion_x ?? null,
+      posicion_y: datos.posicion_y ?? null,
+      ancho: datos.ancho ?? null,
+      alto: datos.alto ?? null,
+      tamano_fuente: datos.tamano_fuente ?? 10,
+
       document: {
-        connect: { id_documento: idDocumento }
+        connect: {
+          id_documento: idDocumento
+        }
       }
     }
   });
 };
+
 
 // Listar campos de un documento
 export const obtenerCampos = async (
