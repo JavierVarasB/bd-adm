@@ -6,33 +6,42 @@ import {
   Navigate
 } from "react-router-dom";
 
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import {
+  AuthProvider,
+  useAuth
+} from "./context/AuthContext";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardLayout from "./components/DashboardLayout";
 
 import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import JefeDashboard from "./pages/JefeDashBoard";
+import TrabajadorDashboard from "./pages/TrabajadorDashboard";
+import Usuarios from "./pages/Usuarios";
 
-const Dashboard = () => {
+// Redirección según el rol autenticado
+const DashboardRedirect = () => {
+  const { usuario, autenticado, cargando } = useAuth();
 
-  const { usuario, logout } = useAuth();
+  if (cargando) {
+    return <p>Verificando sesión...</p>;
+  }
 
-  return (
-    <div style={{ padding: "40px" }}>
+  if (!autenticado || !usuario) {
+    return <Navigate to="/login" replace />;
+  }
 
-      <h1>Bienvenido, {usuario?.nombre}</h1>
+  const rutas = {
+    ADMIN: "/admin",
+    JEFE: "/jefe",
+    TRABAJADOR: "/trabajador"
+  };
 
-      <p>Rol: {usuario?.rol}</p>
-
-      <p>RUT: {usuario?.rut}</p>
-
-      <button onClick={logout}>
-        Cerrar sesión
-      </button>
-
-    </div>
-  );
+  return <Navigate to={rutas[usuario.rol]} replace />;
 };
 
 const AppRoutes = () => {
-
   const { autenticado, cargando } = useAuth();
 
   if (cargando) {
@@ -41,41 +50,86 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-
+      {/* Inicio y redirección general */}
       <Route
-        path="/login"
-        element={
-          autenticado
-            ? <Navigate to="/dashboard" replace />
-            : <Login />
-        }
+        path="/"
+        element={<DashboardRedirect />}
       />
 
       <Route
         path="/dashboard"
+        element={<DashboardRedirect />}
+      />
+
+      {/* Login público */}
+      <Route
+        path="/login"
         element={
           autenticado
-            ? <Dashboard />
-            : <Navigate to="/login" replace />
+            ? <DashboardRedirect />
+            : <Login />
         }
       />
 
+      {/* Rutas protegidas */}
+      <Route element={<ProtectedRoute />}>
+        {/* Layout compartido */}
+        <Route element={<DashboardLayout />}>
+
+          {/* ADMIN */}
+          <Route
+            element={
+              <ProtectedRoute allowedRoles={["ADMIN"]} />
+            }
+          >
+            <Route
+              path="/admin"
+              element={<AdminDashboard />}
+            />
+
+            <Route
+              path="/admin/usuarios"
+              element={<Usuarios />}
+            />
+          </Route>
+
+          {/* JEFE */}
+          <Route
+            element={
+              <ProtectedRoute allowedRoles={["JEFE"]} />
+            }
+          >
+            <Route
+              path="/jefe"
+              element={<JefeDashboard />}
+            />
+          </Route>
+
+          {/* TRABAJADOR */}
+          <Route
+            element={
+              <ProtectedRoute allowedRoles={["TRABAJADOR"]} />
+            }
+          >
+            <Route
+              path="/trabajador"
+              element={<TrabajadorDashboard />}
+            />
+          </Route>
+
+        </Route>
+      </Route>
+
+      {/* Rutas inexistentes */}
       <Route
         path="*"
-        element={
-          <Navigate
-            to={autenticado ? "/dashboard" : "/login"}
-            replace
-          />
-        }
+        element={<DashboardRedirect />}
       />
-
     </Routes>
   );
 };
 
 const App = () => {
-
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -86,3 +140,5 @@ const App = () => {
 };
 
 export default App;
+
+
