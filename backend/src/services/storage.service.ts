@@ -48,13 +48,22 @@ export const subirArchivo = async (
   };
 };
 
-// Generar URL temporal de descarga
+
+// Generar URL temporal para visualizar o descargar
 export const obtenerUrlDescarga = async (
-  rutaArchivo: string
+  rutaArchivo: string,
+  descargar: boolean = false
 ) => {
+
   const { data, error } = await supabase.storage
     .from(BUCKET)
-    .createSignedUrl(rutaArchivo, 300);
+    .createSignedUrl(
+      rutaArchivo,
+      300,
+      {
+        download: descargar
+      }
+    );
 
   if (error) {
     throw new Error(
@@ -64,6 +73,7 @@ export const obtenerUrlDescarga = async (
 
   return data.signedUrl;
 };
+
 
 // Eliminar archivo
 export const eliminarArchivo = async (

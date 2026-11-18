@@ -84,6 +84,7 @@ const asignacionSelect = {
   fecha_envio: true,
   fecha_visualizacion: true,
   archivo_firmado: true,
+  archivo_completado: true,
   documento: {
     select: {
       id_documento: true,

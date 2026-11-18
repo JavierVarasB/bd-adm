@@ -1,0 +1,282 @@
+
+.documentos-page {
+  width: 100%;
+}
+
+.documentos-header {
+  margin-bottom: 26px;
+}
+
+.documentos-header h2 {
+  color: #17365d;
+  font-size: 24px;
+  margin: 0 0 8px;
+}
+
+.documentos-header p,
+.upload-heading p,
+.documentos-listado-header p {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.documentos-upload,
+.documentos-listado {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.upload-heading,
+.documentos-listado-header {
+  margin-bottom: 22px;
+}
+
+.upload-heading h3,
+.documentos-listado-header h3 {
+  color: #17365d;
+  font-size: 17px;
+  margin: 0 0 7px;
+}
+
+.documentos-upload form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.documentos-upload .campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+}
+
+.campo-formulario label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.campo-formulario input {
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.campo-formulario input:focus {
+  outline: none;
+  border-color: #17365d;
+}
+
+.ayuda-archivo,
+.archivo-seleccionado {
+  font-size: 11px;
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+.archivo-seleccionado {
+  color: #166534;
+  font-weight: 600;
+}
+
+.btn-subir-documento {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #17365d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-subir-documento:hover {
+  background: #234b78;
+}
+
+.btn-subir-documento:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.documentos-listado-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-actualizar {
+  padding: 9px 13px;
+  border: 1px solid #dbe3ed;
+  background: #f8fafc;
+  border-radius: 6px;
+  color: #17365d;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.documentos-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 17px;
+}
+
+.documentos-toolbar input {
+  width: 100%;
+  max-width: 420px;
+  padding: 11px 13px;
+  border: 1px solid #dbe3ed;
+  border-radius: 6px;
+  outline: none;
+  font-size: 13px;
+}
+
+.documentos-toolbar span {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.documentos-table-container {
+  overflow-x: auto;
+  border: 1px solid #edf1f5;
+  border-radius: 8px;
+}
+
+.documentos-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.documentos-table th {
+  padding: 15px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.documentos-table td {
+  padding: 15px;
+  border-top: 1px solid #edf1f5;
+  color: #334155;
+  font-size: 12px;
+}
+
+.documento-nombre {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 190px;
+}
+
+.documento-icono {
+  background: #fee2e2;
+  color: #b91c1c;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 10px 7px;
+  border-radius: 6px;
+}
+
+.documento-nombre div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.documento-nombre strong {
+  color: #334155;
+}
+
+.documento-nombre div span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.documento-estado {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.documento-acciones {
+  display: flex;
+  gap: 7px;
+}
+
+.btn-visualizar,
+.btn-descargar {
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-visualizar {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.btn-descargar {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.estado-documentos {
+  text-align: center;
+  padding: 35px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 850px) {
+  .documentos-upload form {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-subir-documento {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .documentos-upload,
+  .documentos-listado {
+    padding: 17px;
+  }
+
+  .documentos-listado-header,
+  .documentos-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .documentos-toolbar input {
+    max-width: none;
+  }
+
+  .documentos-table {
+    min-width: 700px;
+  }
+}

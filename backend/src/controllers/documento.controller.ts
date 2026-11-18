@@ -277,8 +277,11 @@ export const descargarDocumento = async (
     }
 
     // 4. Generar URL de descarga temporal
+    const descargar = req.query.download === "true";
+
     const url = await obtenerUrlDescarga(
-      documento.ruta_archivo
+      documento.ruta_archivo,
+      descargar
     );
 
     // 5. Devolver la URL al cliente

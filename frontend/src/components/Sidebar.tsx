@@ -17,22 +17,32 @@ interface MenuItem {
 const menuPorRol: Record<Rol, MenuItem[]> = {
   ADMIN: [
     {
-        nombre: "Inicio",
-        ruta: "/admin",
-        icono: "⌂"
+      nombre: "Inicio",
+      ruta: "/admin",
+      icono: "⌂"
     },
     {
-        nombre: "Usuarios",
-        ruta: "/admin/usuarios",
-        icono: "♙"
+      nombre: "Usuarios",
+      ruta: "/admin/usuarios",
+      icono: "♙"
+    },
+    {
+      nombre: "Documentos",
+      ruta: "/admin/documentos",
+      icono: "▤"
     }
-    ],
+  ],
 
   JEFE: [
     {
       nombre: "Inicio",
       ruta: "/jefe",
       icono: "⌂"
+    },
+    {
+      nombre: "Documentos",
+      ruta: "/jefe/documentos",
+      icono: "▤"
     }
   ],
 

@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import JefeDashboard from "./pages/JefeDashBoard";
 import TrabajadorDashboard from "./pages/TrabajadorDashboard";
 import Usuarios from "./pages/Usuarios";
+import Documentos from "./pages/Documentos";
 
 // Redirección según el rol autenticado
 const DashboardRedirect = () => {
@@ -91,6 +92,11 @@ const AppRoutes = () => {
               path="/admin/usuarios"
               element={<Usuarios />}
             />
+
+            <Route
+              path="/admin/documentos"
+              element={<Documentos />}
+            />
           </Route>
 
           {/* JEFE */}
@@ -102,6 +108,11 @@ const AppRoutes = () => {
             <Route
               path="/jefe"
               element={<JefeDashboard />}
+            />
+
+            <Route
+              path="/jefe/documentos"
+              element={<Documentos />}
             />
           </Route>
 
