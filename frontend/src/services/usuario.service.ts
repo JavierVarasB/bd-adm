@@ -64,3 +64,11 @@ export const eliminarUsuario = async (
 ): Promise<void> => {
   await api.delete(`/usuarios/${rut}`);
 };
+
+
+// Obtener trabajadores disponibles para asignaciones
+export const obtenerTrabajadores = async (): Promise<Usuario[]> => {
+  const respuesta = await api.get<Usuario[]>("/usuarios/trabajadores");
+
+  return respuesta.data;
+};

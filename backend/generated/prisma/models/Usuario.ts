@@ -226,6 +226,7 @@ export type UsuarioWhereInput = {
   firma?: Prisma.StringNullableFilter<"Usuario"> | string | null
   documentosCreados?: Prisma.DocumentosListRelationFilter
   documentosRecibidos?: Prisma.AsignacionDocumentoListRelationFilter
+  registrosAuditoria?: Prisma.AuditoriaListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type UsuarioOrderByWithRelationInput = {
   firma?: Prisma.SortOrderInput | Prisma.SortOrder
   documentosCreados?: Prisma.DocumentosOrderByRelationAggregateInput
   documentosRecibidos?: Prisma.AsignacionDocumentoOrderByRelationAggregateInput
+  registrosAuditoria?: Prisma.AuditoriaOrderByRelationAggregateInput
 }
 
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -251,6 +253,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   firma?: Prisma.StringNullableFilter<"Usuario"> | string | null
   documentosCreados?: Prisma.DocumentosListRelationFilter
   documentosRecibidos?: Prisma.AsignacionDocumentoListRelationFilter
+  registrosAuditoria?: Prisma.AuditoriaListRelationFilter
 }, "rut" | "correo">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -288,6 +291,7 @@ export type UsuarioCreateInput = {
   firma?: string | null
   documentosCreados?: Prisma.DocumentosCreateNestedManyWithoutEmisorInput
   documentosRecibidos?: Prisma.AsignacionDocumentoCreateNestedManyWithoutReceptorInput
+  registrosAuditoria?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -299,6 +303,7 @@ export type UsuarioUncheckedCreateInput = {
   firma?: string | null
   documentosCreados?: Prisma.DocumentosUncheckedCreateNestedManyWithoutEmisorInput
   documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutReceptorInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -310,6 +315,7 @@ export type UsuarioUpdateInput = {
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosCreados?: Prisma.DocumentosUpdateManyWithoutEmisorNestedInput
   documentosRecibidos?: Prisma.AsignacionDocumentoUpdateManyWithoutReceptorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -321,6 +327,7 @@ export type UsuarioUncheckedUpdateInput = {
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosCreados?: Prisma.DocumentosUncheckedUpdateManyWithoutEmisorNestedInput
   documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutReceptorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -390,6 +397,11 @@ export type UsuarioScalarRelationFilter = {
   isNot?: Prisma.UsuarioWhereInput
 }
 
+export type UsuarioNullableScalarRelationFilter = {
+  is?: Prisma.UsuarioWhereInput | null
+  isNot?: Prisma.UsuarioWhereInput | null
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -438,6 +450,22 @@ export type UsuarioUpdateOneRequiredWithoutDocumentosRecibidosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutDocumentosRecibidosInput, Prisma.UsuarioUpdateWithoutDocumentosRecibidosInput>, Prisma.UsuarioUncheckedUpdateWithoutDocumentosRecibidosInput>
 }
 
+export type UsuarioCreateNestedOneWithoutRegistrosAuditoriaInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedCreateWithoutRegistrosAuditoriaInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutRegistrosAuditoriaInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneWithoutRegistrosAuditoriaNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedCreateWithoutRegistrosAuditoriaInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutRegistrosAuditoriaInput
+  upsert?: Prisma.UsuarioUpsertWithoutRegistrosAuditoriaInput
+  disconnect?: Prisma.UsuarioWhereInput | boolean
+  delete?: Prisma.UsuarioWhereInput | boolean
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutRegistrosAuditoriaInput, Prisma.UsuarioUpdateWithoutRegistrosAuditoriaInput>, Prisma.UsuarioUncheckedUpdateWithoutRegistrosAuditoriaInput>
+}
+
 export type UsuarioCreateWithoutDocumentosCreadosInput = {
   rut: number
   nombre: string
@@ -446,6 +474,7 @@ export type UsuarioCreateWithoutDocumentosCreadosInput = {
   correo: string
   firma?: string | null
   documentosRecibidos?: Prisma.AsignacionDocumentoCreateNestedManyWithoutReceptorInput
+  registrosAuditoria?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutDocumentosCreadosInput = {
@@ -456,6 +485,7 @@ export type UsuarioUncheckedCreateWithoutDocumentosCreadosInput = {
   correo: string
   firma?: string | null
   documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutReceptorInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutDocumentosCreadosInput = {
@@ -482,6 +512,7 @@ export type UsuarioUpdateWithoutDocumentosCreadosInput = {
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosRecibidos?: Prisma.AsignacionDocumentoUpdateManyWithoutReceptorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutDocumentosCreadosInput = {
@@ -492,6 +523,7 @@ export type UsuarioUncheckedUpdateWithoutDocumentosCreadosInput = {
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutReceptorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutDocumentosRecibidosInput = {
@@ -502,6 +534,7 @@ export type UsuarioCreateWithoutDocumentosRecibidosInput = {
   correo: string
   firma?: string | null
   documentosCreados?: Prisma.DocumentosCreateNestedManyWithoutEmisorInput
+  registrosAuditoria?: Prisma.AuditoriaCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutDocumentosRecibidosInput = {
@@ -512,6 +545,7 @@ export type UsuarioUncheckedCreateWithoutDocumentosRecibidosInput = {
   correo: string
   firma?: string | null
   documentosCreados?: Prisma.DocumentosUncheckedCreateNestedManyWithoutEmisorInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutDocumentosRecibidosInput = {
@@ -538,6 +572,7 @@ export type UsuarioUpdateWithoutDocumentosRecibidosInput = {
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosCreados?: Prisma.DocumentosUpdateManyWithoutEmisorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutDocumentosRecibidosInput = {
@@ -548,6 +583,67 @@ export type UsuarioUncheckedUpdateWithoutDocumentosRecibidosInput = {
   correo?: Prisma.StringFieldUpdateOperationsInput | string
   firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   documentosCreados?: Prisma.DocumentosUncheckedUpdateManyWithoutEmisorNestedInput
+  registrosAuditoria?: Prisma.AuditoriaUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutRegistrosAuditoriaInput = {
+  rut: number
+  nombre: string
+  rol: $Enums.Rol
+  clave: string
+  correo: string
+  firma?: string | null
+  documentosCreados?: Prisma.DocumentosCreateNestedManyWithoutEmisorInput
+  documentosRecibidos?: Prisma.AsignacionDocumentoCreateNestedManyWithoutReceptorInput
+}
+
+export type UsuarioUncheckedCreateWithoutRegistrosAuditoriaInput = {
+  rut: number
+  nombre: string
+  rol: $Enums.Rol
+  clave: string
+  correo: string
+  firma?: string | null
+  documentosCreados?: Prisma.DocumentosUncheckedCreateNestedManyWithoutEmisorInput
+  documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedCreateNestedManyWithoutReceptorInput
+}
+
+export type UsuarioCreateOrConnectWithoutRegistrosAuditoriaInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedCreateWithoutRegistrosAuditoriaInput>
+}
+
+export type UsuarioUpsertWithoutRegistrosAuditoriaInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedUpdateWithoutRegistrosAuditoriaInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedCreateWithoutRegistrosAuditoriaInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutRegistrosAuditoriaInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutRegistrosAuditoriaInput, Prisma.UsuarioUncheckedUpdateWithoutRegistrosAuditoriaInput>
+}
+
+export type UsuarioUpdateWithoutRegistrosAuditoriaInput = {
+  rut?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  clave?: Prisma.StringFieldUpdateOperationsInput | string
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentosCreados?: Prisma.DocumentosUpdateManyWithoutEmisorNestedInput
+  documentosRecibidos?: Prisma.AsignacionDocumentoUpdateManyWithoutReceptorNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutRegistrosAuditoriaInput = {
+  rut?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  clave?: Prisma.StringFieldUpdateOperationsInput | string
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  firma?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentosCreados?: Prisma.DocumentosUncheckedUpdateManyWithoutEmisorNestedInput
+  documentosRecibidos?: Prisma.AsignacionDocumentoUncheckedUpdateManyWithoutReceptorNestedInput
 }
 
 
@@ -558,11 +654,13 @@ export type UsuarioUncheckedUpdateWithoutDocumentosRecibidosInput = {
 export type UsuarioCountOutputType = {
   documentosCreados: number
   documentosRecibidos: number
+  registrosAuditoria: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentosCreados?: boolean | UsuarioCountOutputTypeCountDocumentosCreadosArgs
   documentosRecibidos?: boolean | UsuarioCountOutputTypeCountDocumentosRecibidosArgs
+  registrosAuditoria?: boolean | UsuarioCountOutputTypeCountRegistrosAuditoriaArgs
 }
 
 /**
@@ -589,6 +687,13 @@ export type UsuarioCountOutputTypeCountDocumentosRecibidosArgs<ExtArgs extends r
   where?: Prisma.AsignacionDocumentoWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountRegistrosAuditoriaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditoriaWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   rut?: boolean
@@ -599,6 +704,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   firma?: boolean
   documentosCreados?: boolean | Prisma.Usuario$documentosCreadosArgs<ExtArgs>
   documentosRecibidos?: boolean | Prisma.Usuario$documentosRecibidosArgs<ExtArgs>
+  registrosAuditoria?: boolean | Prisma.Usuario$registrosAuditoriaArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -633,6 +739,7 @@ export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   documentosCreados?: boolean | Prisma.Usuario$documentosCreadosArgs<ExtArgs>
   documentosRecibidos?: boolean | Prisma.Usuario$documentosRecibidosArgs<ExtArgs>
+  registrosAuditoria?: boolean | Prisma.Usuario$registrosAuditoriaArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -643,6 +750,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     documentosCreados: Prisma.$DocumentosPayload<ExtArgs>[]
     documentosRecibidos: Prisma.$AsignacionDocumentoPayload<ExtArgs>[]
+    registrosAuditoria: Prisma.$AuditoriaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     rut: number
@@ -1047,6 +1155,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   documentosCreados<T extends Prisma.Usuario$documentosCreadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$documentosCreadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   documentosRecibidos<T extends Prisma.Usuario$documentosRecibidosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$documentosRecibidosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AsignacionDocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  registrosAuditoria<T extends Prisma.Usuario$registrosAuditoriaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$registrosAuditoriaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1515,6 +1624,30 @@ export type Usuario$documentosRecibidosArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.AsignacionDocumentoScalarFieldEnum | Prisma.AsignacionDocumentoScalarFieldEnum[]
+}
+
+/**
+ * Usuario.registrosAuditoria
+ */
+export type Usuario$registrosAuditoriaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Auditoria
+   */
+  select?: Prisma.AuditoriaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Auditoria
+   */
+  omit?: Prisma.AuditoriaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditoriaInclude<ExtArgs> | null
+  where?: Prisma.AuditoriaWhereInput
+  orderBy?: Prisma.AuditoriaOrderByWithRelationInput | Prisma.AuditoriaOrderByWithRelationInput[]
+  cursor?: Prisma.AuditoriaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditoriaScalarFieldEnum | Prisma.AuditoriaScalarFieldEnum[]
 }
 
 /**

@@ -16,6 +16,25 @@ export const obtenerUsuarios = async () => {
   });
 };
 
+
+// Obtener exclusivamente usuarios con rol TRABAJADOR
+export const obtenerTrabajadores = async () => {
+  return await prisma.usuario.findMany({
+    where: {
+      rol: Rol.TRABAJADOR
+    },
+    select: {
+      rut: true,
+      nombre: true,
+      correo: true
+    },
+    orderBy: {
+      nombre: "asc"
+    }
+  });
+};
+
+
 export const obtenerUsuarioPorRut = async (rut: number) => {
   return await prisma.usuario.findUnique({
     where: { rut },

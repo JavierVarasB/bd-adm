@@ -1,14 +1,21 @@
 
+/* =========================================
+   GESTIÓN DOCUMENTAL - TEMA OSCURO
+   ========================================= */
+
 .documentos-page {
   width: 100%;
+  color: #e2e8f0;
 }
+
+/* ENCABEZADO */
 
 .documentos-header {
   margin-bottom: 26px;
 }
 
 .documentos-header h2 {
-  color: #17365d;
+  color: #f1f5f9;
   font-size: 24px;
   margin: 0 0 8px;
 }
@@ -16,18 +23,21 @@
 .documentos-header p,
 .upload-heading p,
 .documentos-listado-header p {
-  color: #64748b;
+  color: #94a3b8;
   font-size: 13px;
   margin: 0;
 }
 
+/* TARJETAS PRINCIPALES */
+
 .documentos-upload,
 .documentos-listado {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: #1e1e29;
+  border: 1px solid #30303e;
+  border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
 }
 
 .upload-heading,
@@ -37,10 +47,12 @@
 
 .upload-heading h3,
 .documentos-listado-header h3 {
-  color: #17365d;
+  color: #f1f0f7;
   font-size: 17px;
   margin: 0 0 7px;
 }
+
+/* FORMULARIO */
 
 .documentos-upload form {
   display: grid;
@@ -60,54 +72,70 @@
 .campo-formulario label {
   font-size: 13px;
   font-weight: 600;
-  color: #334155;
+  color: #cbd5e1;
 }
 
 .campo-formulario input {
   padding: 11px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+  border: 1px solid #414153;
+  border-radius: 7px;
   font-size: 13px;
   min-width: 0;
+  background: #15151e;
+  color: #f1f5f9;
+  color-scheme: dark;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-formulario input::placeholder {
+  color: #717184;
 }
 
 .campo-formulario input:focus {
   outline: none;
-  border-color: #17365d;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.13);
 }
 
 .ayuda-archivo,
 .archivo-seleccionado {
   font-size: 11px;
-  color: #64748b;
+  color: #94a3b8;
   overflow-wrap: anywhere;
 }
 
 .archivo-seleccionado {
-  color: #166534;
+  color: #86efac;
   font-weight: 600;
 }
+
+/* BOTÓN SUBIR */
 
 .btn-subir-documento {
   grid-column: 1 / -1;
   justify-self: start;
   padding: 11px 18px;
-  border: none;
+  border: 1px solid #8b5cf6;
   border-radius: 7px;
-  background: #17365d;
+  background: #7c3aed;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .btn-subir-documento:hover {
-  background: #234b78;
+  background: #6d28d9;
+  transform: translateY(-1px);
 }
 
 .btn-subir-documento:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
+
+/* ENCABEZADO DEL LISTADO */
 
 .documentos-listado-header {
   display: flex;
@@ -118,13 +146,26 @@
 
 .btn-actualizar {
   padding: 9px 13px;
-  border: 1px solid #dbe3ed;
-  background: #f8fafc;
-  border-radius: 6px;
-  color: #17365d;
+  border: 1px solid #454052;
+  background: #292633;
+  border-radius: 7px;
+  color: #c4b5fd;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 }
+
+.btn-actualizar:hover {
+  background: #373044;
+  border-color: #8b5cf6;
+}
+
+.btn-actualizar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* BÚSQUEDA */
 
 .documentos-toolbar {
   display: flex;
@@ -138,22 +179,35 @@
   width: 100%;
   max-width: 420px;
   padding: 11px 13px;
-  border: 1px solid #dbe3ed;
-  border-radius: 6px;
+  border: 1px solid #414153;
+  border-radius: 7px;
+  background: #15151e;
+  color: #f1f5f9;
   outline: none;
   font-size: 13px;
 }
 
+.documentos-toolbar input::placeholder {
+  color: #717184;
+}
+
+.documentos-toolbar input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
 .documentos-toolbar span {
   font-size: 12px;
-  color: #64748b;
+  color: #94a3b8;
   white-space: nowrap;
 }
 
+/* TABLA */
+
 .documentos-table-container {
   overflow-x: auto;
-  border: 1px solid #edf1f5;
-  border-radius: 8px;
+  border: 1px solid #343442;
+  border-radius: 9px;
 }
 
 .documentos-table {
@@ -164,18 +218,31 @@
 
 .documentos-table th {
   padding: 15px;
-  background: #f8fafc;
-  color: #64748b;
-  font-size: 12px;
+  background: #292735;
+  color: #c4b5fd;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   white-space: nowrap;
 }
 
 .documentos-table td {
   padding: 15px;
-  border-top: 1px solid #edf1f5;
-  color: #334155;
+  border-top: 1px solid #30303e;
+  color: #cbd5e1;
   font-size: 12px;
+  background: #1e1e29;
 }
+
+.documentos-table tbody tr {
+  transition: background 0.2s;
+}
+
+.documentos-table tbody tr:hover td {
+  background: #292735;
+}
+
+/* NOMBRE DEL DOCUMENTO */
 
 .documento-nombre {
   display: flex;
@@ -185,8 +252,8 @@
 }
 
 .documento-icono {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: #45232f;
+  color: #fca5a5;
   font-weight: 800;
   font-size: 11px;
   padding: 10px 7px;
@@ -200,22 +267,26 @@
 }
 
 .documento-nombre strong {
-  color: #334155;
+  color: #f1f5f9;
 }
 
 .documento-nombre div span {
-  color: #94a3b8;
+  color: #818196;
   font-size: 10px;
 }
 
+/* ESTADO */
+
 .documento-estado {
-  background: #f1f5f9;
-  color: #475569;
+  background: #343044;
+  color: #c4b5fd;
   padding: 5px 9px;
   border-radius: 20px;
   font-size: 10px;
   white-space: nowrap;
 }
+
+/* ACCIONES */
 
 .documento-acciones {
   display: flex;
@@ -225,30 +296,45 @@
 .btn-visualizar,
 .btn-descargar {
   padding: 7px 10px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 5px;
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s;
 }
 
 .btn-visualizar {
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: #282747;
+  color: #a5b4fc;
+  border-color: #39365e;
+}
+
+.btn-visualizar:hover {
+  background: #37335f;
 }
 
 .btn-descargar {
-  background: #dcfce7;
-  color: #166534;
+  background: #19372e;
+  color: #86efac;
+  border-color: #28523e;
 }
+
+.btn-descargar:hover {
+  background: #24513c;
+}
+
+/* ESTADOS DE CARGA */
 
 .estado-documentos {
   text-align: center;
   padding: 35px;
-  color: #64748b;
+  color: #94a3b8;
   font-size: 13px;
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 850px) {
   .documentos-upload form {
@@ -280,3 +366,4 @@
     min-width: 700px;
   }
 }
+

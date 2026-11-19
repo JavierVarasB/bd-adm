@@ -1,0 +1,486 @@
+
+/* ========================================
+   ASIGNACIONES - TEMA OSCURO
+======================================== */
+
+.asignaciones-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #e5e7eb;
+  width: 100%;
+}
+
+/* Encabezado */
+
+.asignaciones-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.asignaciones-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  color: #a78bfa;
+}
+
+.asignaciones-header h2 {
+  margin: 8px 0;
+  color: #f4f4f5;
+  font-size: 25px;
+}
+
+.asignaciones-header p,
+.asignaciones-card-heading p {
+  margin: 0;
+  color: #a1a1aa;
+  font-size: 13px;
+}
+
+/* Actualizar */
+
+.asignaciones-refresh {
+  padding: 10px 16px;
+
+  border: 1px solid #3a3d49;
+  border-radius: 8px;
+
+  background: #292b36;
+  color: #c4b5fd;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.asignaciones-refresh:hover {
+  background: #353141;
+  border-color: #8b5cf6;
+}
+
+.asignaciones-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Alertas */
+
+.asignaciones-alert {
+  padding: 13px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.asignaciones-alert.error {
+  background: rgba(220, 38, 38, 0.12);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.asignaciones-alert.success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.25);
+}
+
+/* Indicadores */
+
+.asignaciones-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.asignaciones-stats article {
+  background: #1b1d25;
+  border: 1px solid #30333f;
+  border-radius: 11px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s;
+}
+
+.asignaciones-stats article:hover {
+  border-color: #6d4ac4;
+}
+
+.asignaciones-stats article span {
+  color: #a1a1aa;
+  font-size: 12px;
+}
+
+.asignaciones-stats article strong {
+  font-size: 27px;
+  color: #c4b5fd;
+}
+
+/* Tarjetas */
+
+.asignaciones-card {
+  background: #1b1d25;
+  border: 1px solid #30333f;
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.asignaciones-card-heading {
+  margin-bottom: 22px;
+}
+
+.asignaciones-card-heading h3 {
+  margin: 0 0 7px;
+  font-size: 17px;
+  color: #e5e7eb;
+}
+
+/* Formularios */
+
+.asignacion-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 19px;
+}
+
+.asignacion-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4d4d8;
+}
+
+.asignacion-form-group input,
+.asignacion-form-group select,
+.asignaciones-filters input,
+.asignaciones-filters select {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+
+  border: 1px solid #3a3d49;
+  border-radius: 7px;
+
+  background: #111318;
+  color: #e5e7eb;
+
+  font-size: 13px;
+  box-sizing: border-box;
+  color-scheme: dark;
+}
+
+.asignacion-form-group input::placeholder,
+.asignaciones-filters input::placeholder {
+  color: #71717a;
+}
+
+.asignacion-form-group input:focus,
+.asignacion-form-group select:focus,
+.asignaciones-filters input:focus,
+.asignaciones-filters select:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+}
+
+/* Selección de trabajadores */
+
+.trabajadores-selection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #d4d4d8;
+}
+
+.trabajadores-selection-header span {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.trabajadores-selection {
+  max-height: 300px;
+  overflow-y: auto;
+
+  border: 1px solid #3a3d49;
+  border-radius: 9px;
+  background: #171920;
+}
+
+.trabajador-select-all,
+.trabajador-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+
+  border-bottom: 1px solid #30333f;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.trabajador-select-all {
+  background: #252630;
+  color: #e5e7eb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trabajador-option {
+  color: #e5e7eb;
+}
+
+.trabajador-option:hover {
+  background: #252630;
+}
+
+.trabajador-option:last-child {
+  border-bottom: none;
+}
+
+.trabajador-option input,
+.trabajador-select-all input {
+  width: 16px;
+  height: 16px;
+  accent-color: #8b5cf6;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.trabajador-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  background: rgba(139, 92, 246, 0.17);
+  color: #c4b5fd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.trabajador-data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.trabajador-data strong {
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.trabajador-data small {
+  color: #a1a1aa;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+/* Confirmación */
+
+.asignacion-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.asignacion-form-footer span {
+  color: #a1a1aa;
+  font-size: 12px;
+}
+
+.asignacion-form-footer button {
+  padding: 12px 20px;
+
+  background: #7c3aed;
+  color: #ffffff;
+
+  border: 1px solid #8b5cf6;
+  border-radius: 7px;
+
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.asignacion-form-footer button:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+.asignacion-form-footer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Filtros */
+
+.asignaciones-filters {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* Tabla */
+
+.asignaciones-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.asignaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  text-align: left;
+}
+
+.asignaciones-table th {
+  padding: 14px 12px;
+
+  background: #252630;
+  color: #a78bfa;
+
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.asignaciones-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #30333f;
+
+  color: #d4d4d8;
+  font-size: 12px;
+}
+
+.asignaciones-table tbody tr {
+  background: #1b1d25;
+  transition: background 0.2s;
+}
+
+.asignaciones-table tbody tr:hover {
+  background: #252630;
+}
+
+.asignaciones-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.asignacion-trabajador {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.asignacion-trabajador small {
+  color: #a1a1aa;
+}
+
+/* Estados */
+
+.estado-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.estado-pendiente {
+  background: rgba(245, 158, 11, 0.13);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+}
+
+.estado-visualizado {
+  background: rgba(59, 130, 246, 0.13);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+}
+
+.estado-completado {
+  background: rgba(16, 185, 129, 0.13);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+/* Scrollbar */
+
+.trabajadores-selection::-webkit-scrollbar,
+.asignaciones-table-container::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.trabajadores-selection::-webkit-scrollbar-track,
+.asignaciones-table-container::-webkit-scrollbar-track {
+  background: #171920;
+}
+
+.trabajadores-selection::-webkit-scrollbar-thumb,
+.asignaciones-table-container::-webkit-scrollbar-thumb {
+  background: #454052;
+  border-radius: 10px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .asignaciones-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .asignaciones-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .asignaciones-header h2 {
+    font-size: 21px;
+  }
+
+  .asignaciones-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .asignaciones-stats article {
+    padding: 14px;
+  }
+
+  .asignaciones-card {
+    padding: 16px;
+  }
+
+  .asignaciones-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .asignacion-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .asignacion-form-footer button {
+    width: 100%;
+  }
+}

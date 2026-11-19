@@ -42,3 +42,8 @@ export type ValoresCampo = Prisma.ValoresCampoModel
  * 
  */
 export type CamposDocumento = Prisma.CamposDocumentoModel
+/**
+ * Model Auditoria
+ * 
+ */
+export type Auditoria = Prisma.AuditoriaModel

@@ -5,8 +5,15 @@ import {
   crearUsuario,
   actualizarUsuario,
   eliminarUsuario,
-  cambiarClaveUsuario
+  cambiarClaveUsuario,
+  obtenerTrabajadores
 } from "../services/usuario.service.js";
+
+import {
+  registrarEventoAuditoria
+} from "../services/auditoria.service.js";
+
+
 
 
 //GET USUARIOS
@@ -122,6 +129,13 @@ export const registrarUsuario = async (
   res: Response
 ): Promise<void> => {
   try {
+
+    if (!req.usuario) {
+      res.status(401).json({
+        message: "Autenticación requerida"
+      });
+      return;
+    }
     const datos: unknown = req.body;
 
     if (!esObjeto(datos)) {
@@ -152,6 +166,22 @@ export const registrarUsuario = async (
       nombre: nombre.trim(),
       correo: correo.trim().toLowerCase(),
       clave
+    });
+
+    // Obtener los datos del administrador autenticado
+    const administrador = await obtenerUsuarioPorRut(
+      req.usuario.rut
+    );
+
+    // Registrar evento de auditoría
+    await registrarEventoAuditoria({
+      rut_usuario: req.usuario.rut,
+      nombre_usuario: administrador?.nombre ?? "Administrador",
+      rol_usuario: req.usuario.rol,
+      accion: "CREAR",
+      modulo: "USUARIOS",
+      descripcion: `Se registró el usuario ${usuario.nombre}`,
+      id_registro: usuario.rut
     });
 
     res.status(201).json({
@@ -384,6 +414,27 @@ export const actualizarClave = async (
 
   } catch (error) {
     console.error("Error al cambiar contraseña:", error);
+
+    res.status(500).json({
+      message: "Error interno del servidor"
+    });
+  }
+};
+
+
+
+// GET TRABAJADORES
+export const listarTrabajadores = async (
+  _req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const trabajadores = await obtenerTrabajadores();
+
+    res.status(200).json(trabajadores);
+
+  } catch (error) {
+    console.error("Error al obtener trabajadores:", error);
 
     res.status(500).json({
       message: "Error interno del servidor"

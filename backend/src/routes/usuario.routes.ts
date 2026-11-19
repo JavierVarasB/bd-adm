@@ -7,7 +7,8 @@ import {
   registrarUsuario,
   modificarUsuario,
   borrarUsuario,
-  actualizarClave
+  actualizarClave,
+  listarTrabajadores
 } from "../controllers/usuario.controller.js";
 
 import {
@@ -23,6 +24,13 @@ router.use(verificarToken);
 
 //Actualizacion de clave
 router.patch("/me/clave", actualizarClave);
+
+// Listar exclusivamente trabajadores: ADMIN y JEFE
+router.get(
+  "/trabajadores",
+  permitirRoles(Rol.ADMIN, Rol.JEFE),
+  listarTrabajadores
+);
 
 // Solo administradores
 router.get("/", permitirRoles(Rol.ADMIN), listarUsuarios);

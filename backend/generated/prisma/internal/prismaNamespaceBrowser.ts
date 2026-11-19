@@ -53,7 +53,8 @@ export const ModelName = {
   Documentos: 'Documentos',
   AsignacionDocumento: 'AsignacionDocumento',
   ValoresCampo: 'ValoresCampo',
-  CamposDocumento: 'CamposDocumento'
+  CamposDocumento: 'CamposDocumento',
+  Auditoria: 'Auditoria'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -135,6 +136,21 @@ export const CamposDocumentoScalarFieldEnum = {
 } as const
 
 export type CamposDocumentoScalarFieldEnum = (typeof CamposDocumentoScalarFieldEnum)[keyof typeof CamposDocumentoScalarFieldEnum]
+
+
+export const AuditoriaScalarFieldEnum = {
+  id_auditoria: 'id_auditoria',
+  rut_usuario: 'rut_usuario',
+  nombre_usuario: 'nombre_usuario',
+  rol_usuario: 'rol_usuario',
+  accion: 'accion',
+  modulo: 'modulo',
+  descripcion: 'descripcion',
+  id_registro: 'id_registro',
+  fecha: 'fecha'
+} as const
+
+export type AuditoriaScalarFieldEnum = (typeof AuditoriaScalarFieldEnum)[keyof typeof AuditoriaScalarFieldEnum]
 
 
 export const SortOrder = {

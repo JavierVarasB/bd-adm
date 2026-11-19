@@ -27,35 +27,36 @@ const Login = () => {
     setError("");
     setCargando(true);
 
+    
     try {
-
       await login(correo, clave);
 
-      // La redirección se realizará según el rol
-      // en nuestra siguiente implementación.
       navigate("/dashboard");
 
     } catch (error: any) {
 
-        console.error("Error de autenticación:", error);
+      console.error("Error de autenticación:", error);
 
-        console.error(
-            "Respuesta del servidor:",
-            error.response?.data
-        );
+      console.error(
+        "Respuesta del servidor:",
+        error.response?.data
+      );
 
-        console.error(
-            "Código HTTP:",
-            error.response?.status
-        );
+      console.error(
+        "Código HTTP:",
+        error.response?.status
+      );
 
-        setError(
-            error.response?.data?.message ??
-            error.message ??
-            "No fue posible iniciar sesión"
-        );
+      setError(
+        error.response?.data?.message ??
+        error.message ??
+        "No fue posible iniciar sesión"
+      );
 
-        }
+    } finally {
+      setCargando(false);
+    }
+
   };
 
   return (

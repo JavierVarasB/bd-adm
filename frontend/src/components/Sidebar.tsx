@@ -30,6 +30,11 @@ const menuPorRol: Record<Rol, MenuItem[]> = {
       nombre: "Documentos",
       ruta: "/admin/documentos",
       icono: "▤"
+    },
+    {
+    nombre: "Auditoría",
+    ruta: "/admin/auditoria",
+    icono: "◷"
     }
   ],
 
@@ -43,6 +48,11 @@ const menuPorRol: Record<Rol, MenuItem[]> = {
       nombre: "Documentos",
       ruta: "/jefe/documentos",
       icono: "▤"
+    },
+    {
+      nombre: "Gestión de asignaciones",
+      ruta: "/jefe/asignaciones",
+      icono: "⇄"
     }
   ],
 

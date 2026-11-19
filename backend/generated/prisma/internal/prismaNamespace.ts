@@ -394,7 +394,8 @@ export const ModelName = {
   Documentos: 'Documentos',
   AsignacionDocumento: 'AsignacionDocumento',
   ValoresCampo: 'ValoresCampo',
-  CamposDocumento: 'CamposDocumento'
+  CamposDocumento: 'CamposDocumento',
+  Auditoria: 'Auditoria'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -410,7 +411,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "documentos" | "asignacionDocumento" | "valoresCampo" | "camposDocumento"
+    modelProps: "usuario" | "documentos" | "asignacionDocumento" | "valoresCampo" | "camposDocumento" | "auditoria"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -784,6 +785,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Auditoria: {
+      payload: Prisma.$AuditoriaPayload<ExtArgs>
+      fields: Prisma.AuditoriaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AuditoriaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AuditoriaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        findFirst: {
+          args: Prisma.AuditoriaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AuditoriaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        findMany: {
+          args: Prisma.AuditoriaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>[]
+        }
+        create: {
+          args: Prisma.AuditoriaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        createMany: {
+          args: Prisma.AuditoriaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AuditoriaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>[]
+        }
+        delete: {
+          args: Prisma.AuditoriaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        update: {
+          args: Prisma.AuditoriaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        deleteMany: {
+          args: Prisma.AuditoriaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AuditoriaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AuditoriaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>[]
+        }
+        upsert: {
+          args: Prisma.AuditoriaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditoriaPayload>
+        }
+        aggregate: {
+          args: Prisma.AuditoriaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAuditoria>
+        }
+        groupBy: {
+          args: Prisma.AuditoriaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditoriaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AuditoriaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditoriaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -886,6 +961,21 @@ export const CamposDocumentoScalarFieldEnum = {
 } as const
 
 export type CamposDocumentoScalarFieldEnum = (typeof CamposDocumentoScalarFieldEnum)[keyof typeof CamposDocumentoScalarFieldEnum]
+
+
+export const AuditoriaScalarFieldEnum = {
+  id_auditoria: 'id_auditoria',
+  rut_usuario: 'rut_usuario',
+  nombre_usuario: 'nombre_usuario',
+  rol_usuario: 'rol_usuario',
+  accion: 'accion',
+  modulo: 'modulo',
+  descripcion: 'descripcion',
+  id_registro: 'id_registro',
+  fecha: 'fecha'
+} as const
+
+export type AuditoriaScalarFieldEnum = (typeof AuditoriaScalarFieldEnum)[keyof typeof AuditoriaScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1086,6 +1176,7 @@ export type GlobalOmitConfig = {
   asignacionDocumento?: Prisma.AsignacionDocumentoOmit
   valoresCampo?: Prisma.ValoresCampoOmit
   camposDocumento?: Prisma.CamposDocumentoOmit
+  auditoria?: Prisma.AuditoriaOmit
 }
 
 /* Types for Logging */

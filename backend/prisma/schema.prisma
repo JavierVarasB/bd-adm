@@ -33,6 +33,7 @@ model Usuario {
 
   documentosCreados Documentos[]
   documentosRecibidos AsignacionDocumento[]
+  registrosAuditoria Auditoria[]
 
 }
 
@@ -119,4 +120,33 @@ model CamposDocumento {
   document Documentos @relation(fields: [id_documento],references: [id_documento])
 
   campo ValoresCampo[]
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+model Auditoria {
+
+  id_auditoria Int @id @default(autoincrement())
+
+  rut_usuario Int?
+  nombre_usuario String
+  rol_usuario Rol
+
+  accion String
+  modulo String
+
+  descripcion String?
+
+  id_registro Int?
+
+  fecha DateTime @default(now())
+
+  usuario Usuario? @relation(fields: [rut_usuario],references: [rut],onDelete: SetNull)
+
+  @@index([rut_usuario])
+  @@index([fecha])
+  @@index([modulo, accion])
 }

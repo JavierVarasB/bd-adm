@@ -1,5 +1,6 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { useAuth } from "../context/AuthContext";
 
 interface NavbarProps {
@@ -7,6 +8,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ abrirMenu }: NavbarProps) => {
+
   const { usuario, logout } = useAuth();
 
   const navigate = useNavigate();
@@ -15,7 +17,8 @@ const Navbar = ({ abrirMenu }: NavbarProps) => {
   const titulos: Record<string, string> = {
     "/admin": "Panel de Administración",
     "/jefe": "Gestión Documental",
-    "/trabajador": "Portal del Trabajador"
+    "/trabajador": "Portal del Trabajador",
+    "/jefe/asignaciones": "Gestión de asignaciones"
   };
 
   const titulo =
@@ -28,7 +31,9 @@ const Navbar = ({ abrirMenu }: NavbarProps) => {
 
   return (
     <header className="navbar">
+
       <div className="navbar-left">
+
         <button
           type="button"
           className="menu-toggle"
@@ -42,6 +47,7 @@ const Navbar = ({ abrirMenu }: NavbarProps) => {
           <h1>{titulo}</h1>
           <p>Sistema de gestión y firma de contratos</p>
         </div>
+
       </div>
 
       <div className="navbar-right">
@@ -57,7 +63,9 @@ const Navbar = ({ abrirMenu }: NavbarProps) => {
         >
           Cerrar sesión
         </button>
+
       </div>
+
     </header>
   );
 };

@@ -12,6 +12,8 @@ import camposRoutes, {
   documentoCamposRoutes
 } from "./routes/campos.routes.js";
 
+import auditoriaRoutes from "./routes/auditoria.routes.js";
+
 import valoresRoutes from "./routes/valores.routes.js";
 import pdfRoutes from "./routes/pdf.routes.js";
 import helmet from "helmet";
@@ -59,5 +61,8 @@ app.use("/api/asignaciones", valoresRoutes);
 
 //PDF
 app.use("/api/asignaciones", pdfRoutes);
+
+// Auditoría del sistema
+app.use("/api/auditoria", auditoriaRoutes);
 
 export default app;
