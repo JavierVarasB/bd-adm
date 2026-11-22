@@ -10,6 +10,8 @@ import {
 import type { Documento } from "../types/documento.types";
 
 import "../styles/Documentos.css";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Documentos = () => {
 
@@ -24,6 +26,9 @@ const Documentos = () => {
 
   const [error, setError] = useState("");
   const [mensaje, setMensaje] = useState("");
+
+  const navigate = useNavigate();
+  const { usuario } = useAuth();
 
   // Cargar documentos
   const cargarDocumentos = async () => {
@@ -434,6 +439,20 @@ const Documentos = () => {
                         >
                           Descargar
                         </button>
+
+                        {usuario?.rol === "JEFE" && (
+                          <button
+                            type="button"
+                            className="btn-editar-documento"
+                            onClick={() =>
+                              navigate(
+                                `/jefe/documentos/${documento.id_documento}/editar`
+                              )
+                            }
+                          >
+                            Editar documento
+                          </button>
+                        )}
 
                       </div>
                     </td>

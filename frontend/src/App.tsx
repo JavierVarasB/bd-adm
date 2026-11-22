@@ -22,6 +22,7 @@ import Usuarios from "./pages/Usuarios";
 import Documentos from "./pages/Documentos";
 import Asignaciones from "./pages/Asignaciones";
 import Auditoria from "./pages/Auditoria";
+import EditorDocumento from "./pages/EditorDocumento";
 
 // Redirección según el rol autenticado
 const DashboardRedirect = () => {
@@ -125,6 +126,11 @@ const AppRoutes = () => {
             <Route
               path="/jefe/asignaciones"
               element={<Asignaciones />}
+            />
+
+            <Route
+              path="/jefe/documentos/:id/editar"
+              element={<EditorDocumento />}
             />
           </Route>
 

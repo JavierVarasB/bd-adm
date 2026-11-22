@@ -1,0 +1,200 @@
+
+.editor-documento {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  color: var(--text-primary);
+}
+
+/* Encabezado */
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.editor-etiqueta {
+  color: var(--accent-text);
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+}
+
+.editor-header h2 {
+  margin: 8px 0;
+  font-size: 24px;
+  color: var(--text-primary);
+}
+
+.editor-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.editor-volver {
+  padding: 11px 15px;
+  background: var(--bg-card);
+  color: var(--accent-text);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.editor-volver:hover {
+  background: var(--bg-hover);
+}
+
+/* Indicadores */
+
+.editor-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.editor-resumen > div {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-resumen span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.editor-resumen strong {
+  font-size: 26px;
+  color: var(--accent-text);
+}
+
+/* Panel principal */
+
+.editor-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.editor-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.editor-panel-header h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.editor-panel-header span {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* Navegación */
+
+.editor-navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.editor-navegacion button {
+  padding: 10px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--accent-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.editor-navegacion button:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+}
+
+.editor-navegacion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.editor-navegacion span {
+  color: var(--text-primary);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Visor PDF */
+
+.editor-visor {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+  padding: 16px;
+  overflow: auto;
+  background: #292934;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.editor-canvas {
+  max-width: 100%;
+  height: auto;
+  background: #ffffff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.editor-cargando {
+  color: #d4d4d8;
+  font-size: 13px;
+}
+
+.editor-error {
+  padding: 13px 16px;
+  color: var(--danger-text);
+  background: var(--danger-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .editor-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .editor-resumen {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .editor-panel {
+    padding: 12px;
+  }
+
+  .editor-navegacion {
+    gap: 10px;
+  }
+
+  .editor-navegacion button {
+    padding: 9px;
+    font-size: 11px;
+  }
+}
